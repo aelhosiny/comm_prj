@@ -6,9 +6,25 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.5"
+    ComputedModelVersion    "1.8"
     NumModelReferences	    0
-    NumTestPointedSignals   0
+    NumTestPointedSignals   2
+    TestPointedSignal {
+      SignalName	      "cic1_out"
+      FullBlockPath	      "cic2/Filter"
+      LogSignal		      1
+      MaxPoints		      5000
+      Decimation	      2
+    }
+    TestPointedSignal {
+      SignalName	      "cic2_out"
+      FullBlockPath	      "cic2/cic2"
+      LogSignal		      1
+      UseCustomName	      1
+      LogName		      "cic2_out"
+      MaxPoints		      5000
+      Decimation	      2
+    }
   }
   SavedCharacterEncoding  "UTF-8"
   slprops.hdlmdlprops {
@@ -50,7 +66,7 @@ Model {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -66,8 +82,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1515.0, 729.0]
-	ZoomFactor		[1.0]
-	Offset			[0.0, 0.0]
+	ZoomFactor		[2.5]
+	Offset			[200.05396985244232, 77.850272430461331]
       }
     }
   }
@@ -77,9 +93,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Mar 12 17:08:11 2015"
-  RTWModifiedTimeStamp	  348078609
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Fri Mar 13 01:18:06 2015"
+  RTWModifiedTimeStamp	  348110283
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -923,7 +939,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "250"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "84"
     Block {
@@ -944,6 +960,13 @@ Model {
       Opaque		      off
       RequestExecContextInheritance off
       MaskHideContents	      off
+      Port {
+	PortNumber		1
+	Name			"cic1_out"
+	RTWStorageClass		"Auto"
+	DataLogging		on
+	DataLoggingNameMode	"SignalName"
+      }
       System {
 	Name			"Filter"
 	Location		[41, -4, 1608, 908]
@@ -2438,7 +2461,7 @@ Model {
       Position		      [655, 309, 685, 341]
       ZOrder		      9
       Floating		      off
-      Location		      [50, 53, 1601, 899]
+      Location		      [51, 81, 1602, 927]
       Open		      off
       NumInputPorts	      "1"
       ZoomMode		      "xonly"
@@ -2479,9 +2502,18 @@ Model {
       Opaque		      off
       RequestExecContextInheritance off
       MaskHideContents	      off
+      Port {
+	PortNumber		1
+	Name			"cic2_out"
+	TestPoint		on
+	RTWStorageClass		"Auto"
+	DataLogging		on
+	DataLoggingNameMode	"Custom"
+	DataLoggingName		"cic2_out"
+      }
       System {
 	Name			"cic2"
-	Location		[100, 100, 900, 600]
+	Location		[41, -4, 1608, 908]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2493,7 +2525,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"110"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Input"
@@ -2812,12 +2844,16 @@ Model {
       }
     }
     Line {
+      Name		      "cic1_out"
+      Labels		      [0, 0]
       SrcBlock		      "Filter"
       SrcPort		      1
       DstBlock		      "Scope"
       DstPort		      1
     }
     Line {
+      Name		      "cic2_out"
+      Labels		      [0, 0]
       SrcBlock		      "cic2"
       SrcPort		      1
       Points		      [55, 0; 0, -5]

@@ -9,7 +9,7 @@ fs=sq_wave_freq*osr;
 t_vec = linspace(0,simtime,simtime*osr_dash);
 t_vec = t_vec';
 tsq = square(2*pi*sq_wave_freq*t_vec);
-sq_vec=[t_vec tsq]
+sq_vec=[t_vec tsq];
 %plot(t_vec,tsq);
 
 
@@ -18,6 +18,14 @@ sq_vec=[t_vec tsq]
 
 sim('cic2.mdl', 1);
 
-xdft = (1/length(tsq))*fft(tsq); 
-freq = -fs/2:(fs/length(tsq)):fs/2-(fs/length(tsq)); 
-plot(freq,abs(fftshift(xdft)));
+% xdft = (1/length(tsq))*fft(tsq); 
+% freq = -fs/2:(fs/length(tsq)):fs/2-(fs/length(tsq)); 
+% plot(freq,abs(fftshift(xdft)));
+
+plot_spectrum(tsq,fs);
+
+
+cic1_out = logsout.cic1_out.Data;
+cic2_out = logsout.cic2_out.Data;
+
+plot_spectrum(cic1_out, fs/2);
