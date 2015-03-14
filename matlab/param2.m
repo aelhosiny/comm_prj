@@ -1,8 +1,8 @@
 close all ; clear all; clc;
 
-fs_in = 600e6;
-simtime=1;
-sq_wave_freq=100;
+
+simtime=0.1;
+sq_wave_freq=100e3;
 osr=100;
 osr_dash=osr*sq_wave_freq;
 fs=sq_wave_freq*osr;
@@ -16,7 +16,7 @@ sq_vec=[t_vec tsq];
 
 %tsim = 1/fs_in * length(t_vec);
 
-sim('cic2.mdl', 1);
+sim('cic2.mdl', 0.1);
 
 % xdft = (1/length(tsq))*fft(tsq); 
 % freq = -fs/2:(fs/length(tsq)):fs/2-(fs/length(tsq)); 
