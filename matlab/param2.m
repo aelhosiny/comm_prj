@@ -1,6 +1,6 @@
 close all ; clear all; clc;
 
-fs_in = 625e6;
+fs_in = 600e6;
 simtime=1;
 sq_wave_freq=100;
 osr=100;
@@ -25,7 +25,9 @@ sim('cic2.mdl', 1);
 plot_spectrum(tsq,fs);
 
 
-cic1_out = logsout.cic1_out.Data;
-cic2_out = logsout.cic2_out.Data;
+% cic1_out = logsout.cic1_out.Data;
+% cic2_out = logsout.cic2_out.Data;
 
-plot_spectrum(cic1_out, fs/2);
+
+plot_spectrum(cic4_out, fs/4);
+plot_spectrum(cic8_out, fs/8);
