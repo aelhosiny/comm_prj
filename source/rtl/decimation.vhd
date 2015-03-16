@@ -47,8 +47,8 @@ entity decimation is
        enable     : in  std_logic;
        rstn       : in  std_logic;
        dec_ratio  : in  std_logic_vector(1 downto 0);
-       filter_in  : in  std_logic_vector(5 downto 0);   -- sfix6_En5
-       filter_out : out std_logic_vector(10 downto 0);  -- sfix14_En5
+       filter_in  : in  std_logic_vector(5 downto 0);  -- sfix6_En5
+       filter_out : out std_logic_vector(9 downto 0);  -- sfix10_En8
        ce_out     : out std_logic
        );
 
@@ -98,8 +98,8 @@ architecture rtl of decimation is
   signal sub_cast_3         : signed(13 downto 0);   -- sfix14_En5
   signal sub_temp_1         : signed(14 downto 0);   -- sfix15_En5
   --
-  signal output_register_nx : signed(10 downto 0);   -- sfix14_En5
-  signal output_register_s  : signed(10 downto 0);   -- sfix14_En5
+  signal output_register_nx : signed(9 downto 0);    -- sfix10_En8
+  signal output_register_s  : signed(9 downto 0);    -- sfix10_En8
   signal dec_ratio_s        : unsigned(3 downto 0);
 
 begin
@@ -111,7 +111,8 @@ begin
     dec_ratio_s <=
     to_unsigned(15, 4) when "10",
     to_unsigned(7, 4)  when "01",
-    to_unsigned(3, 4)  when others;
+    to_unsigned(3, 4)  when "00",
+    (others => 'X')    when others;
   
   ce_output : process (clk, rstn)
   begin
@@ -240,10 +241,10 @@ begin
   --   ------------------ Output Register ------------------
   with dec_ratio select
     output_register_nx <=
-    section_out4(13 downto 3)                                    when "00",
-    resize(section_out4(13 downto 5), output_register_nx'length)  when "01",
-    resize(section_out4(13 downto 7), output_register_nx'length) when "10",
-    (others => 'X')                                              when others;
+    section_out4(13) & section_out4(8) & section_out4(7 downto 0)   when "00",
+    section_out4(13) & section_out4(10) & section_out4(9 downto 2)  when "01",
+    section_out4(13) & section_out4(12) & section_out4(11 downto 4) when "10",
+    (others => 'X')                                                 when others;
 
   
   output_reg_process : process (clk, rstn)

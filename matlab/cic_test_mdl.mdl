@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.88"
+    ComputedModelVersion    "1.152"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -82,8 +82,8 @@ Model {
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [2.0754222331205141]
-	  Offset		  [13.254384685399552, 10.501628576596353]
+	  ZoomFactor		  [1.6874273899773555]
+	  Offset		  [11.703346713965646, -3.3894653776138881]
 	}
 	PropName		"EditorsInfo"
       }
@@ -95,9 +95,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar 16 15:21:23 2015"
-  RTWModifiedTimeStamp	  348420021
-  ModelVersionFormat	  "1.%<AutoIncrement:88>"
+  LastModifiedDate	  "Mon Mar 16 23:19:14 2015"
+  RTWModifiedTimeStamp	  348448626
+  ModelVersionFormat	  "1.%<AutoIncrement:152>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -788,15 +788,6 @@ Model {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      ArithShift
-      BitShiftNumberSource    "Dialog"
-      BitShiftNumber	      "0"
-      BinPtShiftNumber	      "0"
-      BitShiftDirection	      "Bidirectional"
-      DiagnosticForOORShift   "None"
-      CheckOORBitShift	      off
-    }
-    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -847,6 +838,21 @@ Model {
       OutputAfterFinalValue   "Extrapolation"
     }
     Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Inport
       Port		      "1"
       OutputFunctionCall      off
@@ -863,6 +869,24 @@ Model {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
+    }
+    Block {
+      BlockType		      MultiPortSwitch
+      DataPortOrder	      "One-based contiguous"
+      Inputs		      "3"
+      DataPortIndices	      "{1,2,3}"
+      DataPortForDefault      "Last data port"
+      DiagnosticForDefault    "Error"
+      zeroidx		      off
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
     }
     Block {
       BlockType		      Outport
@@ -898,6 +922,19 @@ Model {
       Decimation	      "1"
       SampleInput	      off
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Sin
+      SineType		      "Time based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Bias		      "0"
+      Frequency		      "1"
+      Phase		      "0"
+      Samples		      "10"
+      Offset		      "0"
+      SampleTime	      "-1"
+      VectorParams1D	      on
     }
     Block {
       BlockType		      Step
@@ -949,21 +986,6 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Switch
-      Criteria		      "u2 >= Threshold"
-      Threshold		      "0"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      ZeroCross		      on
-      SampleTime	      "-1"
-      AllowDiffInputSizes     off
-    }
-    Block {
       BlockType		      ToWorkspace
       VariableName	      "simulink_output"
       MaxDataPoints	      "1000"
@@ -988,14 +1010,14 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "208"
+    ZoomFactor		    "169"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "63"
+    SIDHighWatermark	    "75"
     Block {
       BlockType		      Constant
       Name		      "Constant"
       SID		      "23"
-      Position		      [40, 275, 70, 305]
+      Position		      [40, 330, 70, 360]
       ZOrder		      30
       Value		      "mux_sel"
     }
@@ -1003,7 +1025,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "ConvertIn"
       SID		      "57"
-      Position		      [240, 190, 280, 220]
+      Position		      [370, 225, 410, 255]
       ZOrder		      36
       ShowName		      off
       OutDataTypeStr	      "fixdt(1,6,5)"
@@ -1012,129 +1034,85 @@ Model {
     }
     Block {
       BlockType		      DataTypeConversion
-      Name		      "ConvertIn2"
-      SID		      "62"
-      Position		      [555, 185, 595, 225]
-      ZOrder		      41
+      Name		      "ConvertIn1"
+      SID		      "73"
+      Position		      [725, 240, 765, 280]
+      ZOrder		      52
       ShowName		      off
-      OutDataTypeStr	      "fixdt(1,11,9)"
+      OutDataTypeStr	      "fixdt(1,10,8)"
       RndMeth		      "Floor"
     }
     Block {
       BlockType		      FromWorkspace
       Name		      "From\nWorkspace"
       SID		      "1"
-      Position		      [20, 178, 85, 202]
+      Position		      [20, 233, 85, 257]
       ZOrder		      1
       VariableName	      "TS"
+      OutDataTypeStr	      "double"
       SampleTime	      "ts_in"
       Interpolate	      off
       OutputAfterFinalValue   "Holding final value"
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      SID		      "24"
-      Ports		      [4]
-      Position		      [635, 88, 665, 122]
-      ZOrder		      31
-      Floating		      off
-      Location		      [2, 81, 1600, 874]
-      Open		      on
-      NumInputPorts	      "4"
-      ZoomMode		      "yonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-	axes2			"%<SignalLabel>"
-	axes3			"%<SignalLabel>"
-	axes4			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      YMin		      "-5~-5~-5~-5"
-      YMax		      "5~5~5~5"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      BlockType		      Gain
+      Name		      "Gain"
+      SID		      "72"
+      Position		      [655, 245, 685, 275]
+      ZOrder		      51
+      Gain		      "2/(R^2)"
+      ParamDataTypeStr	      "double"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      "25"
-      Ports		      [1]
-      Position		      [230, 129, 260, 161]
-      ZOrder		      33
-      Floating		      off
-      Location		      [2, 81, 1600, 874]
-      Open		      off
-      NumInputPorts	      "1"
-      ZoomMode		      "xonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      BlockType		      Gain
+      Name		      "Gain1"
+      SID		      "74"
+      Position		      [170, 285, 200, 315]
+      ZOrder		      54
+      Gain		      "1/32"
+      ParamDataTypeStr	      "double"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      ArithShift
-      Name		      "Shift\nArithmetic"
-      SID		      "63"
-      Ports		      [1, 1]
-      Position		      [440, 192, 505, 218]
-      ZOrder		      42
-      InputPortMap	      "u0"
-      BitShiftNumber	      "SA"
-      BitShiftDirection	      "Right"
+      BlockType		      MultiPortSwitch
+      Name		      "Multiport\nSwitch"
+      SID		      "65"
+      Ports		      [4, 1]
+      Position		      [240, 188, 270, 287]
+      ZOrder		      44
+      InputSameDT	      off
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sin
+      Name		      "Sine Wave"
+      SID		      "66"
+      Ports		      [0, 1]
+      Position		      [55, 105, 85, 135]
+      ZOrder		      45
+      Frequency		      "2*pi*2e6"
+      SampleTime	      "ts_in"
     }
     Block {
       BlockType		      Step
       Name		      "Step"
       SID		      "20"
-      Position		      [55, 110, 85, 140]
+      Position		      [55, 170, 85, 200]
       ZOrder		      27
       Time		      "simtime/2"
       SampleTime	      "ts_in"
-    }
-    Block {
-      BlockType		      Switch
-      Name		      "Switch"
-      SID		      "22"
-      Position		      [140, 185, 190, 225]
-      ZOrder		      29
-      Threshold		      "0.5"
-      InputSameDT	      off
-      OutDataTypeStr	      "double"
-      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace"
       SID		      "18"
       Ports		      [1]
-      Position		      [575, 25, 635, 55]
+      Position		      [520, 315, 580, 345]
       ZOrder		      25
+      BlockMirror	      on
       VariableName	      "cic_out"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
@@ -1145,7 +1123,7 @@ Model {
       SID		      "42"
       Tag		      "FilterWizardSubSystem"
       Ports		      [1, 1]
-      Position		      [315, 185, 390, 225]
+      Position		      [515, 240, 590, 280]
       ZOrder		      35
       UserDataPersistent      on
       UserData		      "DataTag0"
@@ -1449,89 +1427,250 @@ Model {
 	}
       }
     }
-    Line {
-      SrcBlock		      "Step"
-      SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Switch"
-      DstPort		      1
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "cic_in"
+      SID		      "67"
+      Ports		      [1]
+      Position		      [525, 155, 585, 185]
+      ZOrder		      46
+      VariableName	      "cic_in"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
     }
-    Line {
-      SrcBlock		      "Constant"
-      SrcPort		      1
-      Points		      [26, 0; 0, -85]
-      DstBlock		      "Switch"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "From\nWorkspace"
-      SrcPort		      1
-      Points		      [27, 0; 0, 30]
-      DstBlock		      "Switch"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "Switch"
-      SrcPort		      1
-      Points		      [7, 0]
-      Branch {
-	DstBlock		"ConvertIn"
-	DstPort			1
+    Block {
+      BlockType		      Scope
+      Name		      "scope_in"
+      SID		      "25"
+      Ports		      [3]
+      Position		      [230, 19, 255, 51]
+      ZOrder		      33
+      Floating		      off
+      Location		      [2, 81, 1600, 874]
+      Open		      on
+      NumInputPorts	      "3"
+      ZoomMode		      "xonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
       }
-      Branch {
-	Points			[0, -60]
-	DstBlock		"Scope1"
-	DstPort			1
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
       }
+      ShowLegends	      off
+      YMin		      "-5~-5~-5"
+      YMax		      "5~5~5"
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "scope_out"
+      SID		      "24"
+      Ports		      [2]
+      Position		      [745, 17, 775, 53]
+      ZOrder		      31
+      Floating		      off
+      Location		      [2, 81, 1600, 874]
+      Open		      on
+      NumInputPorts	      "2"
+      ZoomMode		      "yonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      TimeRange		      "1.8e-06"
+      YMin		      "0~-5"
+      YMax		      "20~5"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "switch_out"
+      SID		      "68"
+      Ports		      [2]
+      Position		      [340, 17, 370, 53]
+      ZOrder		      47
+      Floating		      off
+      Location		      [2, 81, 1600, 874]
+      Open		      off
+      NumInputPorts	      "2"
+      ZoomMode		      "xonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      TimeRange		      "1.8e-06"
+      YMin		      "0~-5"
+      YMax		      "20~5"
+      SaveName		      "ScopeData2"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
     }
     Line {
       SrcBlock		      "cic16_1"
       SrcPort		      1
-      Points		      [9, 0]
+      Points		      [45, 0]
       Branch {
-	DstBlock		"Shift\nArithmetic"
+	DstBlock		"Gain"
 	DstPort			1
       }
       Branch {
-	Points			[0, -29]
-	Branch {
-	  Points		  [59, 0; 0, -86]
-	  DstBlock		  "Scope"
-	  DstPort		  1
-	}
-	Branch {
-	  Points		  [0, -136]
-	  DstBlock		  "To Workspace"
-	  DstPort		  1
-	}
+	Points			[0, -235]
+	DstBlock		"scope_out"
+	DstPort			1
       }
     }
     Line {
       SrcBlock		      "ConvertIn"
       SrcPort		      1
-      DstBlock		      "cic16_1"
-      DstPort		      1
+      Points		      [48, 0; 0, 20; 27, 0]
+      Branch {
+	Points			[0, 0]
+	DstBlock		"cic16_1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -90]
+	Branch {
+	  Points		  [-184, 0; 0, -125]
+	  DstBlock		  "switch_out"
+	  DstPort		  2
+	}
+	Branch {
+	  DstBlock		  "cic_in"
+	  DstPort		  1
+	}
+      }
     }
     Line {
-      SrcBlock		      "Shift\nArithmetic"
+      SrcBlock		      "Step"
       SrcPort		      1
-      Points		      [13, 0]
+      Points		      [11, 0]
       Branch {
-	Points			[0, -105]
-	DstBlock		"Scope"
+	Points			[0, 65]
+	DstBlock		"Multiport\nSwitch"
+	DstPort			3
+      }
+      Branch {
+	Points			[0, -150]
+	DstBlock		"scope_in"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Sine Wave"
+      SrcPort		      1
+      Points		      [21, 0]
+      Branch {
+	Points			[0, 50; 99, 0; 0, 55]
+	DstBlock		"Multiport\nSwitch"
 	DstPort			2
       }
       Branch {
-	DstBlock		"ConvertIn2"
+	Points			[0, -95]
+	DstBlock		"scope_in"
 	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "ConvertIn2"
+      SrcBlock		      "From\nWorkspace"
       SrcPort		      1
-      Points		      [10, 0; 0, -95]
-      DstBlock		      "Scope"
-      DstPort		      3
+      Points		      [3, 0; 0, 20]
+      Branch {
+	Points			[36, 0; 0, -220]
+	DstBlock		"scope_in"
+	DstPort			3
+      }
+      Branch {
+	Points			[0, 35]
+	DstBlock		"Gain1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Constant"
+      SrcPort		      1
+      Points		      [46, 0; 0, -145]
+      DstBlock		      "Multiport\nSwitch"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Multiport\nSwitch"
+      SrcPort		      1
+      Points		      [45, 0]
+      Branch {
+	Points			[0, -215]
+	DstBlock		"switch_out"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"ConvertIn"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Gain"
+      SrcPort		      1
+      DstBlock		      "ConvertIn1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "ConvertIn1"
+      SrcPort		      1
+      Points		      [37, 0]
+      Branch {
+	Points			[0, -140; -81, 0; 0, -75]
+	DstBlock		"scope_out"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 70]
+	DstBlock		"To Workspace"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Gain1"
+      SrcPort		      1
+      Points		      [17, 0; 0, -25]
+      DstBlock		      "Multiport\nSwitch"
+      DstPort		      4
     }
   }
 }
