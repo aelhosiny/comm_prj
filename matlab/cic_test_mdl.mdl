@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.152"
+    ComputedModelVersion    "1.175"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -69,21 +69,21 @@ Model {
 	Dimension		2
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "42"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [0.98884405001598652]
-	  Offset		  [180.84205467002243, 104.81348311661077]
+	  ZoomFactor		  [0.92913270575097107]
+	  Offset		  [179.93218469940254, -8.1208822465459036]
 	}
 	Object {
 	  $ObjectID		  7
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [1.6874273899773555]
-	  Offset		  [11.703346713965646, -3.3894653776138881]
+	  ZoomFactor		  [1.6970849176172371]
+	  Offset		  [11.750560119492159, -2.2512850658140078]
 	}
 	PropName		"EditorsInfo"
       }
@@ -95,9 +95,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar 16 23:19:14 2015"
-  RTWModifiedTimeStamp	  348448626
-  ModelVersionFormat	  "1.%<AutoIncrement:152>"
+  LastModifiedDate	  "Tue Mar 17 17:02:08 2015"
+  RTWModifiedTimeStamp	  348512527
+  ModelVersionFormat	  "1.%<AutoIncrement:175>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1010,9 +1010,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "169"
+    ZoomFactor		    "170"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "75"
+    SIDHighWatermark	    "82"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1118,6 +1118,18 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      "76"
+      Ports		      [1]
+      Position		      [525, 80, 585, 110]
+      ZOrder		      55
+      BlockMirror	      on
+      VariableName	      "cic_out1"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "cic16_1"
       SID		      "42"
@@ -1149,7 +1161,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"99"
+	ZoomFactor		"93"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Input"
@@ -1159,15 +1171,17 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  DataTypeConversion
-	  Name			  "CombCast5"
-	  SID			  "52"
-	  Position		  [1030, 385, 1070, 415]
-	  ZOrder		  10
+	  BlockType		  Delay
+	  Name			  "CombDelay1"
+	  SID			  "80"
+	  Ports			  [1, 1]
+	  Position		  [1550, 385, 1580, 415]
+	  ZOrder		  59
+	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  OutDataTypeStr	  "fixdt(1,14,5)"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
+	  InputPortMap		  "u0"
+	  DelayLength		  "1"
+	  InitialCondition	  "0"
 	}
 	Block {
 	  BlockType		  Delay
@@ -1252,12 +1266,24 @@ Model {
 	  SourceBlock		  "dspsigops/Downsample"
 	  SourceType		  "Downsample"
 	  N			  "R"
-	  phase			  "0"
+	  phase			  "2"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  RateOptions		  "Allow multirate processing"
 	  smode			  "Allow multirate"
 	  fmode			  "Maintain input frame size"
 	  ic			  "0"
+	}
+	Block {
+	  BlockType		  Delay
+	  Name			  "IntDelay1"
+	  SID			  "79"
+	  Ports			  [1, 1]
+	  Position		  [310, 385, 340, 415]
+	  ZOrder		  58
+	  ShowName		  off
+	  InputPortMap		  "u0"
+	  DelayLength		  "1"
+	  InitialCondition	  "0"
 	}
 	Block {
 	  BlockType		  Delay
@@ -1314,10 +1340,58 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace1"
+	  SID			  "77"
+	  Ports			  [1]
+	  Position		  [460, 200, 520, 230]
+	  ZOrder		  56
+	  BlockMirror		  on
+	  VariableName		  "sec1_out"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace2"
+	  SID			  "78"
+	  Ports			  [1]
+	  Position		  [280, 260, 340, 290]
+	  ZOrder		  57
+	  BlockMirror		  on
+	  VariableName		  "sec1_in"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace3"
+	  SID			  "81"
+	  Ports			  [1]
+	  Position		  [705, 245, 765, 275]
+	  ZOrder		  60
+	  BlockMirror		  on
+	  VariableName		  "sec2_out"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace4"
+	  SID			  "82"
+	  Ports			  [1]
+	  Position		  [1030, 555, 1090, 585]
+	  ZOrder		  61
+	  BlockMirror		  on
+	  VariableName		  "sec2_out1"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "Output"
 	  SID			  "56"
-	  Position		  [1520, 392, 1550, 408]
+	  Position		  [1605, 392, 1635, 408]
 	  ZOrder		  14
 	  IconDisplay		  "Port number"
 	}
@@ -1357,46 +1431,64 @@ Model {
 	    DstPort		    2
 	  }
 	  Branch {
-	    DstBlock		    "Down Sample"
-	    DstPort		    1
+	    Points		    [128, 0]
+	    Branch {
+	      Points		      [0, -140]
+	      DstBlock		      "To Workspace3"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Down Sample"
+	      DstPort		      1
+	    }
 	  }
-	}
-	Line {
-	  SrcBlock		  "Down Sample"
-	  SrcPort		  1
-	  DstBlock		  "CombCast5"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "CombSum5"
 	  SrcPort		  1
-	  Points		  [120, 0]
+	  Points		  [46, 0]
 	  Branch {
-	    DstBlock		    "CombSum6"
+	    Points		    [0, -185]
+	    DstBlock		    "To Workspace1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    DstBlock		    "CombDelay6"
-	    DstPort		    1
+	    Points		    [74, 0]
+	    Branch {
+	      DstBlock		      "CombSum6"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "CombDelay6"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Line {
 	  SrcBlock		  "CombDelay5"
 	  SrcPort		  1
-	  Points		  [0, 10; 70, 0]
-	  DstBlock		  "CombSum5"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "CombCast5"
-	  SrcPort		  1
-	  Points		  [50, 0]
+	  Points		  [0, 10]
 	  Branch {
-	    DstBlock		    "CombSum5"
+	    Points		    [0, 60]
+	    DstBlock		    "To Workspace4"
 	    DstPort		    1
 	  }
 	  Branch {
+	    Points		    [70, 0]
+	    DstBlock		    "CombSum5"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Down Sample"
+	  SrcPort		  1
+	  Points		  [160, 0]
+	  Branch {
 	    DstBlock		    "CombDelay5"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "CombSum5"
 	    DstPort		    1
 	  }
 	}
@@ -1416,13 +1508,33 @@ Model {
 	Line {
 	  SrcBlock		  "ConvertOut"
 	  SrcPort		  1
-	  DstBlock		  "Output"
+	  DstBlock		  "CombDelay1"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Input"
 	  SrcPort		  1
-	  DstBlock		  "IntSum2"
+	  DstBlock		  "IntDelay1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "IntDelay1"
+	  SrcPort		  1
+	  Points		  [26, 0]
+	  Branch {
+	    Points		    [0, -125]
+	    DstBlock		    "To Workspace2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "IntSum2"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "CombDelay1"
+	  SrcPort		  1
+	  DstBlock		  "Output"
 	  DstPort		  1
 	}
       }
@@ -1545,15 +1657,23 @@ Model {
     Line {
       SrcBlock		      "cic16_1"
       SrcPort		      1
-      Points		      [45, 0]
+      Points		      [24, 0]
       Branch {
-	DstBlock		"Gain"
+	Points			[0, -165]
+	DstBlock		"To Workspace1"
 	DstPort			1
       }
       Branch {
-	Points			[0, -235]
-	DstBlock		"scope_out"
-	DstPort			1
+	Points			[21, 0]
+	Branch {
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -235]
+	  DstBlock		  "scope_out"
+	  DstPort		  1
+	}
       }
     }
     Line {
@@ -1561,7 +1681,6 @@ Model {
       SrcPort		      1
       Points		      [48, 0; 0, 20; 27, 0]
       Branch {
-	Points			[0, 0]
 	DstBlock		"cic16_1"
 	DstPort			1
       }

@@ -6,7 +6,7 @@ fs_in = 625e6;
 ts_in = 1/625/1e6;
 simtime = 1000*ts_in;
 
-R = 16;
+R = 4;
 mux_sel = 3;
 
 data = csvread('output_156p.csv');
@@ -30,15 +30,27 @@ else
 end
 
 sim('cic_test_mdl.mdl',simtime);
-plot_spectrum(cic_in, fs_in);
-plot_spectrum(cic_out, fs_in/R);
 
 cic_out_f = cic_out.*2^8;
+cic_out_f1 = cic_out1.*2^5;
+sec1_out_f = sec1_out.*2^5;
+sec1_in_f = sec1_in.*2^5;
+sec2_out_f = sec2_out.*2^5;
+sec2_out1_f = sec2_out1.*2^5;
+
 file_out = strcat('cic_out_',num2str(R),'.txt');
 dlmwrite(file_out, cic_out_f, '\r');
+dlmwrite('cic_out1.txt', cic_out_f1, '\r');
+dlmwrite('sec1_out.txt', sec1_out_f, '\r');
+dlmwrite('sec1_in.txt', sec1_in_f, '\r');
+dlmwrite('sec2_out.txt', sec2_out_f, '\r');
+dlmwrite('sec2_out1.txt', sec2_out1_f, '\r');
 
-t1 = linspace(1,length(cic_in),length(cic_in));
-figure
-subplot(2,1,1) ; plot(t1,cic_in); grid on;
-t1 = linspace(1,length(cic_out),length(cic_out));
-subplot(2,1,2) ; plot(t1,cic_out); grid on;
+% t1 = linspace(1,length(cic_in),length(cic_in));
+% figure
+% subplot(2,1,1) ; plot(t1,cic_in); grid on;
+% t1 = linspace(1,length(cic_out),length(cic_out));
+% subplot(2,1,2) ; plot(t1,cic_out); grid on;
+% 
+% plot_spectrum(cic_in, fs_in);
+% plot_spectrum(cic_out, fs_in/R);
