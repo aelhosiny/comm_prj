@@ -1,0 +1,3 @@
+radix -d
+
+run -a

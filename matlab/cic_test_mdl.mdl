@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.175"
+    ComputedModelVersion    "1.180"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -69,21 +69,21 @@ Model {
 	Dimension		2
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "42"
 	  Extents		  [1367.0, 675.0]
 	  ZoomFactor		  [0.92913270575097107]
-	  Offset		  [179.93218469940254, -8.1208822465459036]
+	  Offset		  [179.93218469940254, 37.377164628454096]
 	}
 	Object {
 	  $ObjectID		  7
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [1.6970849176172371]
-	  Offset		  [11.750560119492159, -2.2512850658140078]
+	  ZoomFactor		  [1.7770036288232245]
+	  Offset		  [12.12156926811053, 6.6926854812359942]
 	}
 	PropName		"EditorsInfo"
       }
@@ -95,9 +95,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 17 17:02:08 2015"
-  RTWModifiedTimeStamp	  348512527
-  ModelVersionFormat	  "1.%<AutoIncrement:175>"
+  LastModifiedDate	  "Wed Mar 18 14:56:26 2015"
+  RTWModifiedTimeStamp	  348591084
+  ModelVersionFormat	  "1.%<AutoIncrement:180>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1010,9 +1010,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "170"
+    ZoomFactor		    "178"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82"
+    SIDHighWatermark	    "83"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1025,7 +1025,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "ConvertIn"
       SID		      "57"
-      Position		      [370, 225, 410, 255]
+      Position		      [330, 225, 370, 255]
       ZOrder		      36
       ShowName		      off
       OutDataTypeStr	      "fixdt(1,6,5)"
@@ -1036,7 +1036,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "ConvertIn1"
       SID		      "73"
-      Position		      [725, 240, 765, 280]
+      Position		      [685, 240, 725, 280]
       ZOrder		      52
       ShowName		      off
       OutDataTypeStr	      "fixdt(1,10,8)"
@@ -1058,7 +1058,7 @@ Model {
       BlockType		      Gain
       Name		      "Gain"
       SID		      "72"
-      Position		      [655, 245, 685, 275]
+      Position		      [615, 245, 645, 275]
       ZOrder		      51
       Gain		      "2/(R^2)"
       ParamDataTypeStr	      "double"
@@ -1110,7 +1110,7 @@ Model {
       Name		      "To Workspace"
       SID		      "18"
       Ports		      [1]
-      Position		      [520, 315, 580, 345]
+      Position		      [480, 315, 540, 345]
       ZOrder		      25
       BlockMirror	      on
       VariableName	      "cic_out"
@@ -1122,7 +1122,7 @@ Model {
       Name		      "To Workspace1"
       SID		      "76"
       Ports		      [1]
-      Position		      [525, 80, 585, 110]
+      Position		      [485, 80, 545, 110]
       ZOrder		      55
       BlockMirror	      on
       VariableName	      "cic_out1"
@@ -1135,7 +1135,7 @@ Model {
       SID		      "42"
       Tag		      "FilterWizardSubSystem"
       Ports		      [1, 1]
-      Position		      [515, 240, 590, 280]
+      Position		      [475, 240, 550, 280]
       ZOrder		      35
       UserDataPersistent      on
       UserData		      "DataTag0"
@@ -1169,19 +1169,6 @@ Model {
 	  Position		  [195, 392, 225, 408]
 	  ZOrder		  1
 	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Delay
-	  Name			  "CombDelay1"
-	  SID			  "80"
-	  Ports			  [1, 1]
-	  Position		  [1550, 385, 1580, 415]
-	  ZOrder		  59
-	  NamePlacement		  "alternate"
-	  ShowName		  off
-	  InputPortMap		  "u0"
-	  DelayLength		  "1"
-	  InitialCondition	  "0"
 	}
 	Block {
 	  BlockType		  Delay
@@ -1280,6 +1267,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [310, 385, 340, 415]
 	  ZOrder		  58
+	  ForegroundColor	  "[0.901961, 0.000000, 0.000000]"
 	  ShowName		  off
 	  InputPortMap		  "u0"
 	  DelayLength		  "1"
@@ -1506,12 +1494,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "ConvertOut"
-	  SrcPort		  1
-	  DstBlock		  "CombDelay1"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "Input"
 	  SrcPort		  1
 	  DstBlock		  "IntDelay1"
@@ -1532,7 +1514,7 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "CombDelay1"
+	  SrcBlock		  "ConvertOut"
 	  SrcPort		  1
 	  DstBlock		  "Output"
 	  DstPort		  1
@@ -1544,7 +1526,7 @@ Model {
       Name		      "cic_in"
       SID		      "67"
       Ports		      [1]
-      Position		      [525, 155, 585, 185]
+      Position		      [485, 155, 545, 185]
       ZOrder		      46
       VariableName	      "cic_in"
       MaxDataPoints	      "inf"
@@ -1590,10 +1572,10 @@ Model {
       Name		      "scope_out"
       SID		      "24"
       Ports		      [2]
-      Position		      [745, 17, 775, 53]
+      Position		      [705, 17, 735, 53]
       ZOrder		      31
       Floating		      off
-      Location		      [2, 81, 1600, 874]
+      Location		      [5, 81, 1603, 874]
       Open		      on
       NumInputPorts	      "2"
       ZoomMode		      "yonly"
@@ -1624,7 +1606,7 @@ Model {
       Name		      "switch_out"
       SID		      "68"
       Ports		      [2]
-      Position		      [340, 17, 370, 53]
+      Position		      [335, 17, 365, 53]
       ZOrder		      47
       Floating		      off
       Location		      [2, 81, 1600, 874]
@@ -1681,10 +1663,6 @@ Model {
       SrcPort		      1
       Points		      [48, 0; 0, 20; 27, 0]
       Branch {
-	DstBlock		"cic16_1"
-	DstPort			1
-      }
-      Branch {
 	Points			[0, -90]
 	Branch {
 	  Points		  [-184, 0; 0, -125]
@@ -1695,6 +1673,10 @@ Model {
 	  DstBlock		  "cic_in"
 	  DstPort		  1
 	}
+      }
+      Branch {
+	DstBlock		"cic16_1"
+	DstPort			1
       }
     }
     Line {
@@ -1752,7 +1734,7 @@ Model {
     Line {
       SrcBlock		      "Multiport\nSwitch"
       SrcPort		      1
-      Points		      [45, 0]
+      Points		      [25, 0]
       Branch {
 	Points			[0, -215]
 	DstBlock		"switch_out"
