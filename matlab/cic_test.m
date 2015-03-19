@@ -52,13 +52,13 @@ dlmwrite('cic_out1.txt', cic_out_f1, '\r');
 % dlmwrite('sec2_out.txt', sec2_out_f, '\r');
 % dlmwrite('sec2_out1.txt', sec2_out1_f, '\r');
 
-t1 = linspace(1,length(cic_in),length(cic_in));
-t1 = t1.*ts_in;
-figure
-subplot(2,1,1) ; plot(t1,cic_in); grid on;
-t1 = linspace(1,length(cic_out),length(cic_out));
-t1 = t1.*ts_in*R;
-subplot(2,1,2) ; plot(t1,cic_out); grid on;
-
-plot_spectrum(cic_in, fs_in);
-plot_spectrum(cic_out, fs_in/R);
+% t1 = linspace(1,length(cic_in),length(cic_in));
+% t1 = t1.*ts_in;
+% figure
+% subplot(2,1,1) ; plot(t1,cic_in); grid on;
+% t1 = linspace(1,length(cic_out),length(cic_out));
+% t1 = t1.*ts_in*R;
+% subplot(2,1,2) ; plot(t1,cic_out); grid on;
+% 
+% plot_spectrum(cic_in, fs_in);
+% plot_spectrum(cic_out, fs_in/R);

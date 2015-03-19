@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.181"
+    ComputedModelVersion    "1.192"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -82,8 +82,8 @@ Model {
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [1.7770036288232245]
-	  Offset		  [12.121569268110534, 6.6926854812359977]
+	  ZoomFactor		  [1.4525299693632383]
+	  Offset		  [10.361644650858851, -35.734068684652769]
 	}
 	PropName		"EditorsInfo"
       }
@@ -95,9 +95,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Mar 19 00:03:10 2015"
-  RTWModifiedTimeStamp	  348624171
-  ModelVersionFormat	  "1.%<AutoIncrement:181>"
+  LastModifiedDate	  "Thu Mar 19 17:54:29 2015"
+  RTWModifiedTimeStamp	  348678445
+  ModelVersionFormat	  "1.%<AutoIncrement:192>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1010,9 +1010,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "178"
+    ZoomFactor		    "145"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "83"
+    SIDHighWatermark	    "85"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1075,6 +1075,16 @@ Model {
       ParamDataTypeStr	      "double"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "K2"
+      SID		      "84"
+      Position		      [795, 165, 825, 195]
+      ZOrder		      56
+      Gain		      "0.1328"
+      ParamDataTypeStr	      "fixdt(1,6,7)"
+      OutDataTypeStr	      "fixdt(1,8,8)"
     }
     Block {
       BlockType		      MultiPortSwitch
@@ -1534,41 +1544,6 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "scope_in"
-      SID		      "25"
-      Ports		      [3]
-      Position		      [230, 19, 255, 51]
-      ZOrder		      33
-      Floating		      off
-      Location		      [2, 81, 1600, 874]
-      Open		      on
-      NumInputPorts	      "3"
-      ZoomMode		      "xonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-	axes2			"%<SignalLabel>"
-	axes3			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      YMin		      "-5~-5~-5"
-      YMax		      "5~5~5"
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
       Name		      "scope_out"
       SID		      "24"
       Ports		      [2]
@@ -1603,14 +1578,14 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "switch_out"
-      SID		      "68"
+      Name		      "scope_out1"
+      SID		      "85"
       Ports		      [2]
-      Position		      [335, 17, 365, 53]
-      ZOrder		      47
+      Position		      [900, 172, 930, 208]
+      ZOrder		      57
       Floating		      off
       Location		      [2, 81, 1600, 874]
-      Open		      off
+      Open		      on
       NumInputPorts	      "2"
       ZoomMode		      "xonly"
       List {
@@ -1632,7 +1607,7 @@ Model {
       TimeRange		      "1.8e-06"
       YMin		      "0~-5"
       YMax		      "20~5"
-      SaveName		      "ScopeData2"
+      SaveName		      "ScopeData3"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
@@ -1664,15 +1639,8 @@ Model {
       Points		      [48, 0; 0, 20; 27, 0]
       Branch {
 	Points			[0, -90]
-	Branch {
-	  Points		  [-184, 0; 0, -125]
-	  DstBlock		  "switch_out"
-	  DstPort		  2
-	}
-	Branch {
-	  DstBlock		  "cic_in"
-	  DstPort		  1
-	}
+	DstBlock		"cic_in"
+	DstPort			1
       }
       Branch {
 	DstBlock		"cic16_1"
@@ -1682,47 +1650,23 @@ Model {
     Line {
       SrcBlock		      "Step"
       SrcPort		      1
-      Points		      [11, 0]
-      Branch {
-	Points			[0, 65]
-	DstBlock		"Multiport\nSwitch"
-	DstPort			3
-      }
-      Branch {
-	Points			[0, -150]
-	DstBlock		"scope_in"
-	DstPort			2
-      }
+      Points		      [11, 0; 0, 65]
+      DstBlock		      "Multiport\nSwitch"
+      DstPort		      3
     }
     Line {
       SrcBlock		      "Sine Wave"
       SrcPort		      1
-      Points		      [21, 0]
-      Branch {
-	Points			[0, 50; 99, 0; 0, 55]
-	DstBlock		"Multiport\nSwitch"
-	DstPort			2
-      }
-      Branch {
-	Points			[0, -95]
-	DstBlock		"scope_in"
-	DstPort			1
-      }
+      Points		      [21, 0; 0, 50; 99, 0; 0, 55]
+      DstBlock		      "Multiport\nSwitch"
+      DstPort		      2
     }
     Line {
       SrcBlock		      "From\nWorkspace"
       SrcPort		      1
-      Points		      [3, 0; 0, 20]
-      Branch {
-	Points			[36, 0; 0, -220]
-	DstBlock		"scope_in"
-	DstPort			3
-      }
-      Branch {
-	Points			[0, 35]
-	DstBlock		"Gain1"
-	DstPort			1
-      }
+      Points		      [3, 0; 0, 55]
+      DstBlock		      "Gain1"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Constant"
@@ -1734,16 +1678,8 @@ Model {
     Line {
       SrcBlock		      "Multiport\nSwitch"
       SrcPort		      1
-      Points		      [25, 0]
-      Branch {
-	Points			[0, -215]
-	DstBlock		"switch_out"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"ConvertIn"
-	DstPort			1
-      }
+      DstBlock		      "ConvertIn"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Gain"
@@ -1756,9 +1692,24 @@ Model {
       SrcPort		      1
       Points		      [37, 0]
       Branch {
-	Points			[0, -140; -81, 0; 0, -75]
-	DstBlock		"scope_out"
-	DstPort			2
+	Points			[0, -80]
+	Branch {
+	  DstBlock		  "K2"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -30]
+	  Branch {
+	    Points		    [0, -30; -81, 0; 0, -75]
+	    DstBlock		    "scope_out"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [110, 0; 0, 30]
+	    DstBlock		    "scope_out1"
+	    DstPort		    1
+	  }
+	}
       }
       Branch {
 	Points			[0, 70]
@@ -1772,6 +1723,13 @@ Model {
       Points		      [17, 0; 0, -25]
       DstBlock		      "Multiport\nSwitch"
       DstPort		      4
+    }
+    Line {
+      SrcBlock		      "K2"
+      SrcPort		      1
+      Points		      [32, 0; 0, 20]
+      DstBlock		      "scope_out1"
+      DstPort		      2
     }
   }
 }
