@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.180"
+    ComputedModelVersion    "1.181"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -74,7 +74,7 @@ Model {
 	  LoadSaveID		  "42"
 	  Extents		  [1367.0, 675.0]
 	  ZoomFactor		  [0.92913270575097107]
-	  Offset		  [179.93218469940254, 37.377164628454096]
+	  Offset		  [179.93218469940257, 37.377164628454125]
 	}
 	Object {
 	  $ObjectID		  7
@@ -83,7 +83,7 @@ Model {
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
 	  ZoomFactor		  [1.7770036288232245]
-	  Offset		  [12.12156926811053, 6.6926854812359942]
+	  Offset		  [12.121569268110534, 6.6926854812359977]
 	}
 	PropName		"EditorsInfo"
       }
@@ -95,9 +95,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Mar 18 14:56:26 2015"
-  RTWModifiedTimeStamp	  348591084
-  ModelVersionFormat	  "1.%<AutoIncrement:180>"
+  LastModifiedDate	  "Thu Mar 19 00:03:10 2015"
+  RTWModifiedTimeStamp	  348624171
+  ModelVersionFormat	  "1.%<AutoIncrement:181>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1575,10 +1575,10 @@ Model {
       Position		      [705, 17, 735, 53]
       ZOrder		      31
       Floating		      off
-      Location		      [5, 81, 1603, 874]
+      Location		      [2, 81, 1600, 874]
       Open		      on
       NumInputPorts	      "2"
-      ZoomMode		      "yonly"
+      ZoomMode		      "xonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
