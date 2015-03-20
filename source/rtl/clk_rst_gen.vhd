@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 18-03-2015
+-- Last update: 19-03-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -103,9 +103,9 @@ begin  -- architecture behav
     to_unsigned(8, 4) when "10",
     (others => 'X')   when others;
   
-  inc_cnt_s <= '1' when clkinv_index_s /= 0 or dec_vldout = '1' else
+  inc_cnt_s <= '1' when clkdiv_cnt_s /= 0 or dec_vldout = '1' else
                '0';
-  count_max_s <= '1' when clkinv_index_s = clkinv_index_s else
+  count_max_s <= '1' when clkdiv_cnt_s = clkinv_index_s else
                  '0';
 
   -- purpose: generate divided programable clock

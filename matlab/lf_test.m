@@ -25,5 +25,5 @@ simtime = (length(lf_in_mat))*ts;
 sim('IIR1.mdl', simtime);
 
 % plot_spectrum(lf_in1, 1/ts);
-% plot_spectrum(lf_out, 1/ts);
 plot_spectrum(lf_out1, 1/ts);
+plot_spectrum(lf_out, 1/ts);

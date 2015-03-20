@@ -34,13 +34,12 @@ entity digcore is
     enable_digclk : in std_logic;
     -- input system clock, 625MHz clock input
     sys_clk       : in std_logic;
-    -- decimator output valid signal, used to implement
-    -- programable divider clock
-    dec_vldout    : in std_logic;
     -- decimation ratio, control freq of divided clock
     dec_ratio     : in std_logic_vector(1 downto 0);
     -- tdc output, input to digtop
-    tdc_out       : in std_logic_vector(4 downto 0)
+    tdc_out       : in std_logic_vector(4 downto 0);
+    -- enable decimator
+    enable_dec    : in std_logic
     );
 
 end entity digcore;

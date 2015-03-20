@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.65"
+    ComputedModelVersion    "1.70"
     NumModelReferences	    0
     NumTestPointedSignals   8
     TestPointedSignal {
@@ -113,21 +113,21 @@ Model {
 	Dimension		2
 	Object {
 	  $ObjectID		  5
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [4.184375]
-	  Offset		  [242.90888722927559, 224.29165742858484]
+	  ZoomFactor		  [3.07816091954023]
+	  Offset		  [160.45182972367439, 183.47575003500748]
 	}
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "21"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [2.3699115044247789]
-	  Offset		  [14.092606422703511, 62.710712868745333]
+	  ZoomFactor		  [2.3594226440808628]
+	  Offset		  [14.066344986930545, 64.577624684932772]
 	}
 	PropName		"EditorsInfo"
       }
@@ -139,9 +139,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 20 23:11:01 2015"
-  RTWModifiedTimeStamp	  348793856
-  ModelVersionFormat	  "1.%<AutoIncrement:65>"
+  LastModifiedDate	  "Fri Mar 20 23:16:26 2015"
+  RTWModifiedTimeStamp	  348794135
+  ModelVersionFormat	  "1.%<AutoIncrement:70>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -832,6 +832,17 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Delay
       DelayLengthSource	      "Dialog"
       DelayLength	      "2"
@@ -990,9 +1001,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "418"
+    ZoomFactor		    "308"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "33"
+    SIDHighWatermark	    "34"
     Block {
       BlockType		      FromWorkspace
       Name		      "From\nWorkspace"
@@ -1040,7 +1051,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"237"
+	ZoomFactor		"236"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1055,6 +1066,16 @@ Model {
 	    DataLogging		    on
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "34"
+	  Position		  [490, 228, 530, 252]
+	  ZOrder		  87
+	  OutDataTypeStr	  "fixdt(1,6,5)"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Delay
@@ -1164,18 +1185,6 @@ Model {
 	}
 	Block {
 	  BlockType		  ToWorkspace
-	  Name			  "lf_out1"
-	  SID			  "29"
-	  Ports			  [1]
-	  Position		  [240, 100, 300, 130]
-	  ZOrder		  79
-	  BlockMirror		  on
-	  VariableName		  "lf_out"
-	  MaxDataPoints		  "inf"
-	  SampleTime		  "-1"
-	}
-	Block {
-	  BlockType		  ToWorkspace
 	  Name			  "lf_out2"
 	  SID			  "30"
 	  Ports			  [1]
@@ -1241,7 +1250,7 @@ Model {
 	  Branch {
 	    Points		    [16, 0]
 	    Branch {
-	      DstBlock		      "Out1"
+	      DstBlock		      "Data Type Conversion"
 	      DstPort		      1
 	    }
 	    Branch {
@@ -1262,15 +1271,8 @@ Model {
 	  }
 	  Branch {
 	    Points		    [0, -35]
-	    Branch {
-	      Points		      [0, -45]
-	      DstBlock		      "lf_out1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      DstBlock		      "lf_scope1"
-	      DstPort		      2
-	    }
+	    DstBlock		    "lf_scope1"
+	    DstPort		    2
 	  }
 	}
 	Line {
@@ -1311,17 +1313,23 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -70]
+	    Points		    [0, -35]
 	    Branch {
+	      Points		      [0, -35]
 	      DstBlock		      "lf_in1"
 	      DstPort		      1
 	    }
 	    Branch {
-	      Points		      [0, -20; 224, 0]
 	      DstBlock		      "lf_scope1"
 	      DstPort		      1
 	    }
 	  }
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
 	}
       }
     }
@@ -1343,10 +1351,22 @@ Model {
       }
     }
     Block {
+      BlockType		      ToWorkspace
+      Name		      "lf_out1"
+      SID		      "29"
+      Ports		      [1]
+      Position		      [470, 190, 530, 220]
+      ZOrder		      87
+      BlockMirror	      on
+      VariableName	      "lf_out"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Outport
       Name		      "Out1"
       SID		      "33"
-      Position		      [525, 278, 555, 292]
+      Position		      [570, 278, 600, 292]
       ZOrder		      85
       IconDisplay	      "Port number"
     }
@@ -1365,8 +1385,16 @@ Model {
     Line {
       SrcBlock		      "IIR1"
       SrcPort		      1
-      DstBlock		      "Out1"
-      DstPort		      1
+      Points		      [121, 0]
+      Branch {
+	Points			[0, -80]
+	DstBlock		"lf_out1"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Out1"
+	DstPort			1
+      }
     }
   }
 }

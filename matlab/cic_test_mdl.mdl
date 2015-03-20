@@ -11,9 +11,9 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.250"
+    ComputedModelVersion    "1.257"
     NumModelReferences	    0
-    NumTestPointedSignals   13
+    NumTestPointedSignals   14
     TestPointedSignal {
       SignalName	      ""
       FullBlockPath	      "cic_test_mdl/Constant"
@@ -66,6 +66,13 @@ Model {
     TestPointedSignal {
       SignalName	      ""
       FullBlockPath	      "cic_test_mdl/Step"
+      LogSignal		      1
+      MaxPoints		      5000
+      Decimation	      2
+    }
+    TestPointedSignal {
+      SignalName	      ""
+      FullBlockPath	      "cic_test_mdl/IIR1/In1"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
@@ -162,28 +169,16 @@ Model {
 	$ClassName		"Simulink.ExplorerBarInfo"
 	Visible			[1]
       }
-      Array {
-	Type			"Simulink.EditorInfo"
-	Dimension		2
-	Object {
-	  $ObjectID		  6
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "95"
-	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [2.1196283688669344]
-	  Offset		  [-19.962187258500876, 13.395068585780507]
-	}
-	Object {
-	  $ObjectID		  7
-	  IsActive		  [1]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
-	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [1.3593908629441624]
-	  Offset		  [9.7012696041822259, 34.84617572582151]
-	}
-	PropName		"EditorsInfo"
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		6
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[1367.0, 676.0]
+	ZoomFactor		[1.5390804597701151]
+	Offset			[10.903659447348787, 63.832359445014959]
       }
     }
   }
@@ -193,9 +188,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 20 18:20:29 2015"
-  RTWModifiedTimeStamp	  348776424
-  ModelVersionFormat	  "1.%<AutoIncrement:250>"
+  LastModifiedDate	  "Fri Mar 20 23:31:06 2015"
+  RTWModifiedTimeStamp	  348795048
+  ModelVersionFormat	  "1.%<AutoIncrement:257>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -230,7 +225,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    8
+    $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "cic_test_mdl"
     overrideMode_	    [0.0]
@@ -289,16 +284,16 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      9
+      $ObjectID		      8
       Version		      "1.13.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  10
+	  $ObjectID		  9
 	  Version		  "1.13.0"
 	  StartTime		  "0.0"
-	  StopTime		  "8.3709e-05"
+	  StopTime		  "simtime"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -330,7 +325,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  11
+	  $ObjectID		  10
 	  Version		  "1.13.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -362,7 +357,7 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  12
+	  $ObjectID		  11
 	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
@@ -418,7 +413,7 @@ Model {
 	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  13
+	  $ObjectID		  12
 	  Version		  "1.13.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -508,7 +503,7 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  14
+	  $ObjectID		  13
 	  Version		  "1.13.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -549,7 +544,7 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  15
+	  $ObjectID		  14
 	  Version		  "1.13.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -564,7 +559,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  16
+	  $ObjectID		  15
 	  Version		  "1.13.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
@@ -579,7 +574,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  17
+	  $ObjectID		  16
 	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
@@ -649,7 +644,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      18
+	      $ObjectID		      17
 	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
@@ -717,7 +712,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      19
+	      $ObjectID		      18
 	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
@@ -799,7 +794,7 @@ Model {
 	  }
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  20
+	  $ObjectID		  19
 	  Version		  "1.13.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
@@ -821,11 +816,11 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    9
+    $ObjectID		    8
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    21
+    $ObjectID		    20
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -1108,9 +1103,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "136"
+    ZoomFactor		    "154"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "195"
+    SIDHighWatermark	    "208"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1214,11 +1209,10 @@ Model {
     Block {
       BlockType		      SubSystem
       Name		      "IIR1"
-      SID		      "95"
+      SID		      "196"
       Ports		      [1, 1]
-      Position		      [855, 250, 895, 310]
-      ZOrder		      83
-      Commented		      on
+      Position		      [745, 250, 785, 310]
+      ZOrder		      96
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1229,7 +1223,7 @@ Model {
       System {
 	Name			"IIR1"
 	Location		[0, 24, 1600, 876]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1240,19 +1234,36 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"212"
+	ZoomFactor		"237"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
-	  SID			  "96"
+	  SID			  "197"
 	  Position		  [20, 168, 50, 182]
 	  ZOrder		  83
 	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "198"
+	  Position		  [490, 228, 530, 252]
+	  ZOrder		  87
+	  OutDataTypeStr	  "fixdt(1,6,5)"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Delay
 	  Name			  "IntDelay3"
-	  SID			  "86"
+	  SID			  "199"
 	  Ports			  [1, 1]
 	  Position		  [405, 295, 435, 325]
 	  ZOrder		  81
@@ -1272,12 +1283,12 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "K2"
-	  SID			  "87"
-	  Position		  [200, 195, 230, 225]
+	  SID			  "200"
+	  Position		  [160, 195, 190, 225]
 	  ZOrder		  74
-	  Gain			  "0.1328"
+	  Gain			  "K2"
 	  ParamDataTypeStr	  "fixdt(1,6,7)"
-	  OutDataTypeStr	  "fixdt(1,8,9)"
+	  OutDataTypeStr	  "fixdt(1,7,8)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1289,12 +1300,12 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "K2*alpha"
-	  SID			  "88"
-	  Position		  [200, 265, 230, 295]
+	  SID			  "201"
+	  Position		  [235, 265, 265, 295]
 	  ZOrder		  76
-	  Gain			  "0.1204"
-	  ParamDataTypeStr	  "fixdt(1,6,8)"
-	  OutDataTypeStr	  "fixdt(1,8,10)"
+	  Gain			  "K3"
+	  ParamDataTypeStr	  "fixdt(1,6,5)"
+	  OutDataTypeStr	  "fixdt(1,8,9)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1306,7 +1317,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "lf_add1"
-	  SID			  "89"
+	  SID			  "202"
 	  Ports			  [2, 1]
 	  Position		  [280, 225, 310, 255]
 	  ZOrder		  75
@@ -1314,7 +1325,7 @@ Model {
 	  Inputs		  "+-"
 	  InputSameDT		  off
 	  AccumDataTypeStr	  "double"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "double"
 	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
@@ -1327,15 +1338,14 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "lf_add2"
-	  SID			  "90"
+	  SID			  "203"
 	  Ports			  [2, 1]
 	  Position		  [370, 225, 400, 255]
 	  ZOrder		  80
 	  IconShape		  "round"
 	  InputSameDT		  off
 	  AccumDataTypeStr	  "double"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
+	  OutDataTypeStr	  "fixdt(1,10,9)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1347,9 +1357,9 @@ Model {
 	Block {
 	  BlockType		  ToWorkspace
 	  Name			  "lf_in1"
-	  SID			  "91"
+	  SID			  "204"
 	  Ports			  [1]
-	  Position		  [75, 20, 135, 50]
+	  Position		  [20, 90, 80, 120]
 	  ZOrder		  78
 	  BlockMirror		  on
 	  VariableName		  "lf_in"
@@ -1358,20 +1368,8 @@ Model {
 	}
 	Block {
 	  BlockType		  ToWorkspace
-	  Name			  "lf_out1"
-	  SID			  "92"
-	  Ports			  [1]
-	  Position		  [240, 100, 300, 130]
-	  ZOrder		  79
-	  BlockMirror		  on
-	  VariableName		  "lf_out"
-	  MaxDataPoints		  "inf"
-	  SampleTime		  "-1"
-	}
-	Block {
-	  BlockType		  ToWorkspace
 	  Name			  "lf_out2"
-	  SID			  "93"
+	  SID			  "205"
 	  Ports			  [1]
 	  Position		  [420, 90, 480, 120]
 	  ZOrder		  82
@@ -1383,7 +1381,7 @@ Model {
 	Block {
 	  BlockType		  Scope
 	  Name			  "lf_scope1"
-	  SID			  "94"
+	  SID			  "206"
 	  Ports			  [2]
 	  Position		  [370, 132, 400, 168]
 	  ZOrder		  77
@@ -1418,7 +1416,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "Out1"
-	  SID			  "97"
+	  SID			  "207"
 	  Position		  [555, 233, 585, 247]
 	  ZOrder		  84
 	  IconDisplay		  "Port number"
@@ -1435,7 +1433,7 @@ Model {
 	  Branch {
 	    Points		    [16, 0]
 	    Branch {
-	      DstBlock		      "Out1"
+	      DstBlock		      "Data Type Conversion"
 	      DstPort		      1
 	    }
 	    Branch {
@@ -1456,21 +1454,14 @@ Model {
 	  }
 	  Branch {
 	    Points		    [0, -35]
-	    Branch {
-	      Points		      [0, -45]
-	      DstBlock		      "lf_out1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      DstBlock		      "lf_scope1"
-	      DstPort		      2
-	    }
+	    DstBlock		    "lf_scope1"
+	    DstPort		    2
 	  }
 	}
 	Line {
 	  SrcBlock		  "K2*alpha"
 	  SrcPort		  1
-	  Points		  [60, 0]
+	  Points		  [25, 0]
 	  DstBlock		  "lf_add1"
 	  DstPort		  2
 	}
@@ -1484,38 +1475,44 @@ Model {
 	Line {
 	  SrcBlock		  "K2"
 	  SrcPort		  1
-	  DstBlock		  "lf_add1"
-	  DstPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    DstBlock		    "lf_add1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 70]
+	    DstBlock		    "K2*alpha"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "In1"
 	  SrcPort		  1
 	  Points		  [74, 0]
 	  Branch {
-	    Points		    [44, 0; 0, 35]
+	    Points		    [0, 35]
+	    DstBlock		    "K2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -35]
 	    Branch {
-	      Points		      [-11, 0; 0, 70]
-	      DstBlock		      "K2*alpha"
+	      Points		      [0, -35]
+	      DstBlock		      "lf_in1"
 	      DstPort		      1
 	    }
 	    Branch {
-	      Points		      [10, 0]
-	      Branch {
-		Points			[0, -175]
-		DstBlock		"lf_in1"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"K2"
-		DstPort			1
-	      }
+	      DstBlock		      "lf_scope1"
+	      DstPort		      1
 	    }
 	  }
-	  Branch {
-	    Points		    [0, -90; 224, 0]
-	    DstBlock		    "lf_scope1"
-	    DstPort		    1
-	  }
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
 	}
       }
     }
@@ -2195,10 +2192,22 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      ToWorkspace
+      Name		      "lf_out1"
+      SID		      "208"
+      Ports		      [1]
+      Position		      [760, 135, 820, 165]
+      ZOrder		      97
+      BlockMirror	      on
+      VariableName	      "lf_out"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Outport
       Name		      "Out1"
       SID		      "98"
-      Position		      [975, 273, 1005, 287]
+      Position		      [860, 273, 890, 287]
       ZOrder		      85
       IconDisplay	      "Port number"
     }
@@ -2265,8 +2274,15 @@ Model {
     Line {
       SrcBlock		      "IIR1"
       SrcPort		      1
-      DstBlock		      "Out1"
-      DstPort		      1
+      Points		      [45, 0]
+      Branch {
+	DstBlock		"lf_out1"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Out1"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "cic8"
@@ -2285,13 +2301,13 @@ Model {
       SrcPort		      1
       Points		      [6, 0]
       Branch {
-	Points			[0, -165]
-	DstBlock		"To Workspace1"
+	Points			[0, 20]
+	DstBlock		"IIR1"
 	DstPort			1
       }
       Branch {
-	Points			[0, 20]
-	DstBlock		"IIR1"
+	Points			[0, -165]
+	DstBlock		"To Workspace1"
 	DstPort			1
       }
     }

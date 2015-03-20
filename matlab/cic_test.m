@@ -2,11 +2,15 @@ clc;
 clear all;
 close all;
 
+K1=122;
+K2=0.132813;
+K3=0.90625;
+
 fs_in = 625e6;
 ts_in = 1/625/1e6;
 
 
-R = 16;
+R = 8;
 mux_sel = 3;
 
 data = csvread('output_156p.csv');
@@ -29,8 +33,8 @@ simtime = (length(TS))*ts_in;
 sim('cic_test_mdl.mdl',simtime);
 % sim('cic_test_mdl.mdl');
 
-cic_out_f = cic_out.*2^8;
-cic_out_f1 = cic_out1.*2^5;
+cic_out_f = cic_out.*2^5;
+% cic_out_f1 = cic_out1.*2^5;
 % sec1_out_f = sec1_out.*2^5;
 % sec1_in_f = sec1_in.*2^5;
 % sec2_out_f = sec2_out.*2^5;
@@ -38,7 +42,7 @@ cic_out_f1 = cic_out1.*2^5;
 
 file_out = strcat('cic_out_',num2str(R),'.txt');
 dlmwrite(file_out, cic_out_f, '\r');
-dlmwrite('cic_out1.txt', cic_out_f1, '\r');
+% dlmwrite('cic_out1.txt', cic_out_f1, '\r');
 
 
 % dlmwrite('sec1_out.txt', sec1_out_f, '\r');
@@ -56,5 +60,5 @@ dlmwrite('cic_out1.txt', cic_out_f1, '\r');
 % 
 % plot_spectrum(cic_in, fs_in);
 plot_spectrum(cic_out, fs_in/R);
-plot_spectrum(lf_out1, fs_in/R);
+plot_spectrum(lf_out, fs_in/R);
 % plot_spectrum(cic_out1, fs_in/R);
