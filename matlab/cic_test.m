@@ -4,9 +4,9 @@ close all;
 
 fs_in = 625e6;
 ts_in = 1/625/1e6;
-simtime = 50000*ts_in;
 
-R = 4;
+
+R = 16;
 mux_sel = 3;
 
 data = csvread('output_156p.csv');
@@ -56,5 +56,5 @@ dlmwrite('cic_out1.txt', cic_out_f1, '\r');
 % 
 % plot_spectrum(cic_in, fs_in);
 plot_spectrum(cic_out, fs_in/R);
-plot_spectrum(cic_out2, fs_in/R);
-% plot_spectrum(lf_out1, fs_in/R);
+plot_spectrum(lf_out1, fs_in/R);
+% plot_spectrum(cic_out1, fs_in/R);
