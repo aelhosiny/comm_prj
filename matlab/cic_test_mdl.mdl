@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.196"
+    ComputedModelVersion    "1.199"
     NumModelReferences	    0
     NumTestPointedSignals   15
     TestPointedSignal {
@@ -184,7 +184,7 @@ Model {
 	  LoadSaveID		  "95"
 	  Extents		  [1367.0, 675.0]
 	  ZoomFactor		  [2.1196283688669344]
-	  Offset		  [-18.962187258500858, 13.395068585780525]
+	  Offset		  [-19.962187258500858, 13.395068585780525]
 	}
 	Object {
 	  $ObjectID		  7
@@ -192,8 +192,8 @@ Model {
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [1.4320855614973262]
-	  Offset		  [10.224047796863275, -39.051135700616115]
+	  ZoomFactor		  [1.2008968609865471]
+	  Offset		  [8.3420463032113528, -84.420814565440608]
 	}
 	PropName		"EditorsInfo"
       }
@@ -205,9 +205,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 20 01:01:18 2015"
-  RTWModifiedTimeStamp	  348714077
-  ModelVersionFormat	  "1.%<AutoIncrement:196>"
+  LastModifiedDate	  "Fri Mar 20 14:40:08 2015"
+  RTWModifiedTimeStamp	  348763190
+  ModelVersionFormat	  "1.%<AutoIncrement:199>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1120,9 +1120,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "143"
+    ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "98"
+    SIDHighWatermark	    "100"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1172,6 +1172,16 @@ Model {
 	DataLogging		on
 	DataLoggingNameMode	"SignalName"
       }
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      Name		      "ConvertIn2"
+      SID		      "99"
+      Position		      [820, 150, 860, 190]
+      ZOrder		      86
+      ShowName		      off
+      OutDataTypeStr	      "fixdt(1,7,5)"
+      RndMeth		      "Floor"
     }
     Block {
       BlockType		      FromWorkspace
@@ -1233,7 +1243,7 @@ Model {
       Name		      "IIR1"
       SID		      "95"
       Ports		      [1, 1]
-      Position		      [820, 240, 860, 300]
+      Position		      [985, 240, 1025, 300]
       ZOrder		      83
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1261,7 +1271,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "In1"
 	  SID			  "96"
-	  Position		  [22, 168, 52, 182]
+	  Position		  [20, 168, 50, 182]
 	  ZOrder		  83
 	  IconDisplay		  "Port number"
 	}
@@ -1606,6 +1616,18 @@ Model {
       ZOrder		      55
       BlockMirror	      on
       VariableName	      "cic_out1"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace2"
+      SID		      "100"
+      Ports		      [1]
+      Position		      [820, 20, 880, 50]
+      ZOrder		      87
+      BlockMirror	      on
+      VariableName	      "cic_out2"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
     }
@@ -2057,7 +2079,7 @@ Model {
       BlockType		      Outport
       Name		      "Out1"
       SID		      "98"
-      Position		      [925, 263, 955, 277]
+      Position		      [1105, 263, 1135, 277]
       ZOrder		      85
       IconDisplay	      "Port number"
     }
@@ -2134,8 +2156,16 @@ Model {
     Line {
       SrcBlock		      "Gain"
       SrcPort		      1
-      DstBlock		      "ConvertIn1"
-      DstPort		      1
+      Points		      [13, 0]
+      Branch {
+	Points			[0, -90]
+	DstBlock		"ConvertIn2"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"ConvertIn1"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "Gain1"
@@ -2170,6 +2200,13 @@ Model {
       SrcBlock		      "IIR1"
       SrcPort		      1
       DstBlock		      "Out1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "ConvertIn2"
+      SrcPort		      1
+      Points		      [31, 0; 0, -135]
+      DstBlock		      "To Workspace2"
       DstPort		      1
     }
   }

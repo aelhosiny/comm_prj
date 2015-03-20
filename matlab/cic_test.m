@@ -6,7 +6,7 @@ fs_in = 625e6;
 ts_in = 1/625/1e6;
 simtime = 50000*ts_in;
 
-R = 8;
+R = 4;
 mux_sel = 3;
 
 data = csvread('output_156p.csv');
@@ -24,13 +24,7 @@ TS = TS_all;
 
 simtime = (length(TS))*ts_in;
 
-if R==4
-    SA =3;
-elseif R==8
-    SA=5;
-else
-    SA=7;
-end
+
 
 sim('cic_test_mdl.mdl',simtime);
 % sim('cic_test_mdl.mdl');
@@ -60,6 +54,7 @@ dlmwrite('cic_out1.txt', cic_out_f1, '\r');
 % t1 = t1.*ts_in*R;
 % subplot(2,1,2) ; plot(t1,cic_out); grid on;
 % 
-plot_spectrum(cic_in, fs_in);
+% plot_spectrum(cic_in, fs_in);
 plot_spectrum(cic_out, fs_in/R);
-plot_spectrum(lf_out1, fs_in/R);
+plot_spectrum(cic_out2, fs_in/R);
+% plot_spectrum(lf_out1, fs_in/R);
