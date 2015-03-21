@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.70"
+    ComputedModelVersion    "1.75"
     NumModelReferences	    0
     NumTestPointedSignals   8
     TestPointedSignal {
@@ -72,6 +72,23 @@ Model {
     }
   }
   SavedCharacterEncoding  "UTF-8"
+  slprops.hdlmdlprops {
+    $PropName		    "HDLParams"
+    $ObjectID		    1
+    Array {
+      Type		      "Cell"
+      Dimension		      8
+      Cell		      "ClockEnableInputPort"
+      Cell		      "enable"
+      Cell		      "HDLSubsystem"
+      Cell		      "IIR1"
+      Cell		      "ResetAssertedLevel"
+      Cell		      "Active-low"
+      Cell		      "ResetInputPort"
+      Cell		      "rstn"
+      PropName		      "mdlProps"
+    }
+  }
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -84,17 +101,17 @@ Model {
   MaxMDLFileLineLength	  120
   Object {
     $PropName		    "BdWindowsInfo"
-    $ObjectID		    1
+    $ObjectID		    2
     $ClassName		    "Simulink.BDWindowsInfo"
     Object {
       $PropName		      "WindowsInfo"
-      $ObjectID		      2
+      $ObjectID		      3
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
       Location		      [0.0, 24.0, 1600.0, 852.0]
       Object {
 	$PropName		"ModelBrowserInfo"
-	$ObjectID		3
+	$ObjectID		4
 	$ClassName		"Simulink.ModelBrowserInfo"
 	Visible			[1]
 	DockPosition		"Left"
@@ -104,7 +121,7 @@ Model {
       }
       Object {
 	$PropName		"ExplorerBarInfo"
-	$ObjectID		4
+	$ObjectID		5
 	$ClassName		"Simulink.ExplorerBarInfo"
 	Visible			[1]
       }
@@ -112,7 +129,7 @@ Model {
 	Type			"Simulink.EditorInfo"
 	Dimension		2
 	Object {
-	  $ObjectID		  5
+	  $ObjectID		  6
 	  IsActive		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
@@ -121,13 +138,13 @@ Model {
 	  Offset		  [160.45182972367439, 183.47575003500748]
 	}
 	Object {
-	  $ObjectID		  6
+	  $ObjectID		  7
 	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "21"
 	  Extents		  [1367.0, 675.0]
 	  ZoomFactor		  [2.3594226440808628]
-	  Offset		  [14.066344986930545, 64.577624684932772]
+	  Offset		  [14.066344986930517, 64.577624684932772]
 	}
 	PropName		"EditorsInfo"
       }
@@ -139,9 +156,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 20 23:16:26 2015"
-  RTWModifiedTimeStamp	  348794135
-  ModelVersionFormat	  "1.%<AutoIncrement:70>"
+  LastModifiedDate	  "Sat Mar 21 02:35:13 2015"
+  RTWModifiedTimeStamp	  348806112
+  ModelVersionFormat	  "1.%<AutoIncrement:75>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -176,7 +193,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    7
+    $ObjectID		    8
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "lf"
     overrideMode_	    [0.0]
@@ -235,13 +252,13 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      8
+      $ObjectID		      9
       Version		      "1.13.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  9
+	  $ObjectID		  10
 	  Version		  "1.13.0"
 	  StartTime		  "0.0"
 	  StopTime		  "simtime"
@@ -276,7 +293,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  10
+	  $ObjectID		  11
 	  Version		  "1.13.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -308,7 +325,7 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  11
+	  $ObjectID		  12
 	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
@@ -364,7 +381,7 @@ Model {
 	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  12
+	  $ObjectID		  13
 	  Version		  "1.13.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -454,7 +471,7 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  13
+	  $ObjectID		  14
 	  Version		  "1.13.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -495,7 +512,7 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  14
+	  $ObjectID		  15
 	  Version		  "1.13.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -510,7 +527,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  15
+	  $ObjectID		  16
 	  Version		  "1.13.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
@@ -525,7 +542,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  16
+	  $ObjectID		  17
 	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
@@ -595,7 +612,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      17
+	      $ObjectID		      18
 	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
@@ -663,7 +680,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      18
+	      $ObjectID		      19
 	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
@@ -745,7 +762,7 @@ Model {
 	  }
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  19
+	  $ObjectID		  20
 	  Version		  "1.13.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
@@ -760,18 +777,18 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 270, 135, 1330, 765 ] 
+      CurrentDlgPage	      "HDL Code Generation"
+      ConfigPrmDlgPosition     [ 269, 107, 1331, 766 ] 
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    8
+    $ObjectID		    9
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    20
+    $ObjectID		    21
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -1003,7 +1020,17 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "308"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "34"
+    SIDHighWatermark	    "35"
+    Block {
+      BlockType		      DataTypeConversion
+      Name		      "Data Type Conversion"
+      SID		      "35"
+      Position		      [345, 273, 385, 297]
+      ZOrder		      88
+      OutDataTypeStr	      "fixdt(1,6,5)"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+    }
     Block {
       BlockType		      FromWorkspace
       Name		      "From\nWorkspace"
@@ -1028,7 +1055,7 @@ Model {
       Name		      "IIR1"
       SID		      "21"
       Ports		      [1, 1]
-      Position		      [380, 255, 420, 315]
+      Position		      [420, 255, 460, 315]
       ZOrder		      84
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1059,6 +1086,7 @@ Model {
 	  Position		  [20, 168, 50, 182]
 	  ZOrder		  83
 	  IconDisplay		  "Port number"
+	  OutDataTypeStr	  "fixdt(1,6,5)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1141,8 +1169,7 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "+-"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "double"
-	  OutDataTypeStr	  "double"
+	  OutDataTypeStr	  "fixdt(1,8,9)"
 	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
@@ -1161,7 +1188,6 @@ Model {
 	  ZOrder		  80
 	  IconShape		  "round"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "double"
 	  OutDataTypeStr	  "fixdt(1,10,9)"
 	  Port {
 	    PortNumber		    1
@@ -1379,13 +1405,13 @@ Model {
     Line {
       SrcBlock		      "K1"
       SrcPort		      1
-      DstBlock		      "IIR1"
+      DstBlock		      "Data Type Conversion"
       DstPort		      1
     }
     Line {
       SrcBlock		      "IIR1"
       SrcPort		      1
-      Points		      [121, 0]
+      Points		      [81, 0]
       Branch {
 	Points			[0, -80]
 	DstBlock		"lf_out1"
@@ -1395,6 +1421,12 @@ Model {
 	DstBlock		"Out1"
 	DstPort			1
       }
+    }
+    Line {
+      SrcBlock		      "Data Type Conversion"
+      SrcPort		      1
+      DstBlock		      "IIR1"
+      DstPort		      1
     }
   }
 }
