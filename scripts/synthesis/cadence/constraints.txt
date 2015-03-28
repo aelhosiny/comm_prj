@@ -1,0 +1,3 @@
+## input delay of the TDC_out relative negative edge of 625MHz clock
+
+set_input_delay 0.2 -clock sys_clk  –clock_fall tdc_out
