@@ -60,5 +60,6 @@ dlmwrite('cic_out1.txt', cic_out_f, '\r');
 % 
 % plot_spectrum(cic_in, fs_in);
 plot_spectrum(cic_out, fs_in/R);
-% plot_spectrum(lf_out, fs_in/R);
+% plot_spectrum(lf_out1, fs_in/R);
+plot_spectrum(lf_out, fs_in/R);
 % plot_spectrum(cic_out1, fs_in/R);

@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.274"
+    ComputedModelVersion    "1.283"
     NumModelReferences	    0
     NumTestPointedSignals   13
     TestPointedSignal {
@@ -65,42 +65,42 @@ Model {
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/IIR1/In1"
+      FullBlockPath	      "cic_test_mdl/loop_filter/In1"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/IIR1/IntDelay3"
+      FullBlockPath	      "cic_test_mdl/loop_filter/IntDelay3"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/IIR1/K2"
+      FullBlockPath	      "cic_test_mdl/loop_filter/K2"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/IIR1/K2*alpha"
+      FullBlockPath	      "cic_test_mdl/loop_filter/K2*alpha"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/IIR1/lf_add1"
+      FullBlockPath	      "cic_test_mdl/loop_filter/lf_add1"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/IIR1/lf_add2"
+      FullBlockPath	      "cic_test_mdl/loop_filter/lf_add2"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
@@ -167,11 +167,11 @@ Model {
 	$ObjectID		6
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"250"
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
 	Extents			[1367.0, 676.0]
-	ZoomFactor		[0.72334238608619317]
-	Offset			[175.64540351941747, -21.154164138349529]
+	ZoomFactor		[1.4169312169312172]
+	Offset			[10.119492158327166, -10.42454869538831]
       }
     }
   }
@@ -181,9 +181,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Mar 28 15:27:01 2015"
-  RTWModifiedTimeStamp	  349457219
-  ModelVersionFormat	  "1.%<AutoIncrement:274>"
+  LastModifiedDate	  "Sat Mar 28 17:08:49 2015"
+  RTWModifiedTimeStamp	  349463327
+  ModelVersionFormat	  "1.%<AutoIncrement:283>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1085,7 +1085,7 @@ Model {
   System {
     Name		    "cic_test_mdl"
     Location		    [0, 24, 1600, 876]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1178,317 +1178,6 @@ Model {
 	RTWStorageClass		"Auto"
 	DataLogging		on
 	DataLoggingNameMode	"SignalName"
-      }
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "IIR1"
-      SID		      "196"
-      Ports		      [1, 1]
-      Position		      [820, 250, 860, 310]
-      ZOrder		      96
-      ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      System {
-	Name			"IIR1"
-	Location		[0, 24, 1600, 876]
-	Open			off
-	ModelBrowserVisibility	on
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"237"
-	Block {
-	  BlockType		  Inport
-	  Name			  "In1"
-	  SID			  "197"
-	  Position		  [20, 168, 50, 182]
-	  ZOrder		  83
-	  IconDisplay		  "Port number"
-	  Port {
-	    PortNumber		    1
-	    TestPoint		    on
-	    RTWStorageClass	    "Auto"
-	    DataLogging		    on
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  DataTypeConversion
-	  Name			  "Data Type Conversion"
-	  SID			  "198"
-	  Position		  [490, 228, 530, 252]
-	  ZOrder		  87
-	  OutDataTypeStr	  "fixdt(1,6,5)"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Delay
-	  Name			  "IntDelay3"
-	  SID			  "199"
-	  Ports			  [1, 1]
-	  Position		  [405, 295, 435, 325]
-	  ZOrder		  81
-	  BlockMirror		  on
-	  ShowName		  off
-	  InputPortMap		  "u0"
-	  DelayLength		  "1"
-	  InitialCondition	  "0"
-	  Port {
-	    PortNumber		    1
-	    TestPoint		    on
-	    RTWStorageClass	    "Auto"
-	    DataLogging		    on
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "K2"
-	  SID			  "200"
-	  Position		  [160, 195, 190, 225]
-	  ZOrder		  74
-	  Gain			  "K2"
-	  ParamDataTypeStr	  "fixdt(1,6,7)"
-	  OutDataTypeStr	  "fixdt(1,7,8)"
-	  Port {
-	    PortNumber		    1
-	    TestPoint		    on
-	    RTWStorageClass	    "Auto"
-	    DataLogging		    on
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "K2*alpha"
-	  SID			  "201"
-	  Position		  [235, 265, 265, 295]
-	  ZOrder		  76
-	  Gain			  "K3"
-	  ParamDataTypeStr	  "fixdt(1,6,5)"
-	  OutDataTypeStr	  "fixdt(1,8,9)"
-	  Port {
-	    PortNumber		    1
-	    TestPoint		    on
-	    RTWStorageClass	    "Auto"
-	    DataLogging		    on
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "lf_add1"
-	  SID			  "202"
-	  Ports			  [2, 1]
-	  Position		  [280, 225, 310, 255]
-	  ZOrder		  75
-	  IconShape		  "round"
-	  Inputs		  "+-"
-	  InputSameDT		  off
-	  AccumDataTypeStr	  "double"
-	  OutDataTypeStr	  "double"
-	  SaturateOnIntegerOverflow off
-	  Port {
-	    PortNumber		    1
-	    TestPoint		    on
-	    RTWStorageClass	    "Auto"
-	    DataLogging		    on
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "lf_add2"
-	  SID			  "203"
-	  Ports			  [2, 1]
-	  Position		  [370, 225, 400, 255]
-	  ZOrder		  80
-	  IconShape		  "round"
-	  InputSameDT		  off
-	  AccumDataTypeStr	  "double"
-	  OutDataTypeStr	  "fixdt(1,10,9)"
-	  Port {
-	    PortNumber		    1
-	    TestPoint		    on
-	    RTWStorageClass	    "Auto"
-	    DataLogging		    on
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  ToWorkspace
-	  Name			  "lf_in1"
-	  SID			  "204"
-	  Ports			  [1]
-	  Position		  [20, 90, 80, 120]
-	  ZOrder		  78
-	  BlockMirror		  on
-	  VariableName		  "lf_in"
-	  MaxDataPoints		  "inf"
-	  SampleTime		  "-1"
-	}
-	Block {
-	  BlockType		  ToWorkspace
-	  Name			  "lf_out2"
-	  SID			  "205"
-	  Ports			  [1]
-	  Position		  [420, 90, 480, 120]
-	  ZOrder		  82
-	  BlockMirror		  on
-	  VariableName		  "lf_out1"
-	  MaxDataPoints		  "inf"
-	  SampleTime		  "-1"
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "lf_scope1"
-	  SID			  "206"
-	  Ports			  [2]
-	  Position		  [370, 132, 400, 168]
-	  ZOrder		  77
-	  Floating		  off
-	  Location		  [2, 81, 1600, 874]
-	  Open			  off
-	  NumInputPorts		  "2"
-	  ZoomMode		  "xonly"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	    axes2		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  ShowLegends		  off
-	  TimeRange		  "1.8e-06"
-	  YMin			  "0~-5"
-	  YMax			  "20~5"
-	  SaveName		  "ScopeData1"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Out1"
-	  SID			  "207"
-	  Position		  [555, 233, 585, 247]
-	  ZOrder		  84
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "lf_add2"
-	  SrcPort		  1
-	  Points		  [49, 0]
-	  Branch {
-	    Points		    [0, 70]
-	    DstBlock		    "IntDelay3"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [16, 0]
-	    Branch {
-	      DstBlock		      "Data Type Conversion"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, -64; 65, 0; 0, -71]
-	      DstBlock		      "lf_out2"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "lf_add1"
-	  SrcPort		  1
-	  Points		  [28, 0; 0, -45]
-	  Branch {
-	    Points		    [42, 0]
-	    DstBlock		    "lf_add2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -35]
-	    DstBlock		    "lf_scope1"
-	    DstPort		    2
-	  }
-	}
-	Line {
-	  SrcBlock		  "K2*alpha"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "lf_add1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "IntDelay3"
-	  SrcPort		  1
-	  Points		  [-15, 0]
-	  DstBlock		  "lf_add2"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "K2"
-	  SrcPort		  1
-	  Points		  [20, 0]
-	  Branch {
-	    DstBlock		    "lf_add1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 70]
-	    DstBlock		    "K2*alpha"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  Points		  [74, 0]
-	  Branch {
-	    Points		    [0, 35]
-	    DstBlock		    "K2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -35]
-	    Branch {
-	      Points		      [0, -35]
-	      DstBlock		      "lf_in1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      DstBlock		      "lf_scope1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "Data Type Conversion"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
       }
     }
     Block {
@@ -1585,7 +1274,7 @@ Model {
       System {
 	Name			"cic16"
 	Location		[0, 24, 1600, 876]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1983,7 +1672,7 @@ Model {
     }
     Block {
       BlockType		      ToWorkspace
-      Name		      "lf_out1"
+      Name		      "lf_out_final"
       SID		      "208"
       Ports		      [1]
       Position		      [835, 135, 895, 165]
@@ -1992,6 +1681,299 @@ Model {
       VariableName	      "lf_out"
       MaxDataPoints	      "inf"
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "loop_filter"
+      SID		      "196"
+      Ports		      [1, 1]
+      Position		      [805, 250, 845, 310]
+      ZOrder		      96
+      ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"loop_filter"
+	Location		[0, 24, 1600, 876]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"237"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "197"
+	  Position		  [20, 168, 50, 182]
+	  ZOrder		  83
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Delay
+	  Name			  "IntDelay3"
+	  SID			  "199"
+	  Ports			  [1, 1]
+	  Position		  [405, 295, 435, 325]
+	  ZOrder		  81
+	  BlockMirror		  on
+	  ShowName		  off
+	  InputPortMap		  "u0"
+	  DelayLength		  "1"
+	  InitialCondition	  "0"
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "K2"
+	  SID			  "200"
+	  Position		  [160, 195, 190, 225]
+	  ZOrder		  74
+	  Gain			  "K2"
+	  ParamDataTypeStr	  "fixdt(1,6,7)"
+	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "K2*alpha"
+	  SID			  "201"
+	  Position		  [235, 265, 265, 295]
+	  ZOrder		  76
+	  Gain			  "K3"
+	  ParamDataTypeStr	  "fixdt(1,6,5)"
+	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "lf_add1"
+	  SID			  "202"
+	  Ports			  [2, 1]
+	  Position		  [280, 225, 310, 255]
+	  ZOrder		  75
+	  IconShape		  "round"
+	  Inputs		  "+-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "lf_add2"
+	  SID			  "203"
+	  Ports			  [2, 1]
+	  Position		  [370, 225, 400, 255]
+	  ZOrder		  80
+	  IconShape		  "round"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  Port {
+	    PortNumber		    1
+	    TestPoint		    on
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    on
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "lf_in1"
+	  SID			  "204"
+	  Ports			  [1]
+	  Position		  [20, 90, 80, 120]
+	  ZOrder		  78
+	  BlockMirror		  on
+	  VariableName		  "lf_in"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "lf_out2"
+	  SID			  "205"
+	  Ports			  [1]
+	  Position		  [420, 90, 480, 120]
+	  ZOrder		  82
+	  BlockMirror		  on
+	  VariableName		  "lf_out1"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "lf_scope1"
+	  SID			  "206"
+	  Ports			  [2]
+	  Position		  [370, 132, 400, 168]
+	  ZOrder		  77
+	  Floating		  off
+	  Location		  [2, 81, 1600, 874]
+	  Open			  off
+	  NumInputPorts		  "2"
+	  ZoomMode		  "xonly"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	    axes2		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  off
+	  TimeRange		  "1.8e-06"
+	  YMin			  "0~-5"
+	  YMax			  "20~5"
+	  SaveName		  "ScopeData1"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "207"
+	  Position		  [555, 233, 585, 247]
+	  ZOrder		  84
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "lf_add1"
+	  SrcPort		  1
+	  Points		  [28, 0; 0, -45]
+	  Branch {
+	    Points		    [42, 0]
+	    DstBlock		    "lf_add2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -35]
+	    DstBlock		    "lf_scope1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "K2*alpha"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "lf_add1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "IntDelay3"
+	  SrcPort		  1
+	  Points		  [-15, 0]
+	  DstBlock		  "lf_add2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "K2"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    DstBlock		    "lf_add1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 70]
+	    DstBlock		    "K2*alpha"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  Points		  [74, 0]
+	  Branch {
+	    Points		    [0, 35]
+	    DstBlock		    "K2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -35]
+	    Branch {
+	      Points		      [0, -35]
+	      DstBlock		      "lf_in1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "lf_scope1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "lf_add2"
+	  SrcPort		  1
+	  Points		  [49, 0]
+	  Branch {
+	    Points		    [0, 70]
+	    DstBlock		    "IntDelay3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [16, 0]
+	    Branch {
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, -64; 65, 0; 0, -71]
+	      DstBlock		      "lf_out2"
+	      DstPort		      1
+	    }
+	  }
+	}
+      }
     }
     Block {
       BlockType		      Outport
@@ -2057,11 +2039,11 @@ Model {
       DstPort		      4
     }
     Line {
-      SrcBlock		      "IIR1"
+      SrcBlock		      "loop_filter"
       SrcPort		      1
-      Points		      [45, 0]
+      Points		      [60, 0]
       Branch {
-	DstBlock		"lf_out1"
+	DstBlock		"lf_out_final"
 	DstPort			1
       }
       Branch {
@@ -2081,7 +2063,7 @@ Model {
       Points		      [16, 0]
       Branch {
 	Points			[0, 20]
-	DstBlock		"IIR1"
+	DstBlock		"loop_filter"
 	DstPort			1
       }
       Branch {
