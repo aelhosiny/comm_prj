@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.269"
+    ComputedModelVersion    "1.274"
     NumModelReferences	    0
     NumTestPointedSignals   13
     TestPointedSignal {
@@ -167,11 +167,11 @@ Model {
 	$ObjectID		6
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"250"
 	Extents			[1367.0, 676.0]
-	ZoomFactor		[1.4169312169312172]
-	Offset			[10.119492158327166, -10.42454869538831]
+	ZoomFactor		[0.72334238608619317]
+	Offset			[175.64540351941747, -21.154164138349529]
       }
     }
   }
@@ -181,9 +181,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Mar 28 01:17:21 2015"
-  RTWModifiedTimeStamp	  349406237
-  ModelVersionFormat	  "1.%<AutoIncrement:269>"
+  LastModifiedDate	  "Sat Mar 28 15:27:01 2015"
+  RTWModifiedTimeStamp	  349457219
+  ModelVersionFormat	  "1.%<AutoIncrement:274>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1085,7 +1085,7 @@ Model {
   System {
     Name		    "cic_test_mdl"
     Location		    [0, 24, 1600, 876]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1098,7 +1098,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "142"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "249"
+    SIDHighWatermark	    "269"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1567,11 +1567,11 @@ Model {
     Block {
       BlockType		      SubSystem
       Name		      "cic16"
-      SID		      "228"
+      SID		      "250"
       Tag		      "FilterWizardSubSystem"
       Ports		      [1, 1]
       Position		      [475, 240, 550, 280]
-      ZOrder		      99
+      ZOrder		      103
       UserDataPersistent      on
       UserData		      "DataTag0"
       ErrorFcn		      "dspFilterRealizedInBasicElemsAlgLoopErrFcnCallback"
@@ -1585,7 +1585,7 @@ Model {
       System {
 	Name			"cic16"
 	Location		[0, 24, 1600, 876]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1596,11 +1596,11 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"70"
+	ZoomFactor		"72"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Input"
-	  SID			  "229"
+	  SID			  "251"
 	  Position		  [195, 392, 225, 408]
 	  ZOrder		  1
 	  IconDisplay		  "Port number"
@@ -1608,7 +1608,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "CombDelay6"
-	  SID			  "239"
+	  SID			  "261"
 	  Ports			  [1, 1]
 	  Position		  [1320, 465, 1350, 495]
 	  ZOrder		  11
@@ -1621,7 +1621,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "CombDelay7"
-	  SID			  "242"
+	  SID			  "264"
 	  Ports			  [1, 1]
 	  Position		  [1530, 465, 1560, 495]
 	  ZOrder		  14
@@ -1634,7 +1634,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "CombDelay8"
-	  SID			  "244"
+	  SID			  "266"
 	  Ports			  [1, 1]
 	  Position		  [1740, 465, 1770, 495]
 	  ZOrder		  16
@@ -1647,7 +1647,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "CombSum6"
-	  SID			  "238"
+	  SID			  "260"
 	  Ports			  [2, 1]
 	  Position		  [1390, 385, 1420, 415]
 	  ZOrder		  10
@@ -1655,14 +1655,14 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "|+-"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "fixdt(1,20,4)"
-	  OutDataTypeStr	  "fixdt(1,20,4)"
+	  AccumDataTypeStr	  "fixdt(1,21,5)"
+	  OutDataTypeStr	  "fixdt(1,21,5)"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "CombSum7"
-	  SID			  "241"
+	  SID			  "263"
 	  Ports			  [2, 1]
 	  Position		  [1600, 385, 1630, 415]
 	  ZOrder		  13
@@ -1670,14 +1670,14 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "|+-"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "fixdt(1,20,4)"
-	  OutDataTypeStr	  "fixdt(1,20,4)"
+	  AccumDataTypeStr	  "fixdt(1,21,5)"
+	  OutDataTypeStr	  "fixdt(1,21,5)"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "CombSum8"
-	  SID			  "243"
+	  SID			  "265"
 	  Ports			  [2, 1]
 	  Position		  [1810, 385, 1840, 415]
 	  ZOrder		  15
@@ -1685,35 +1685,25 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "|+-"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "fixdt(1,20,4)"
-	  OutDataTypeStr	  "fixdt(1,20,4)"
+	  AccumDataTypeStr	  "fixdt(1,21,5)"
+	  OutDataTypeStr	  "fixdt(1,21,5)"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  DataTypeConversion
-	  Name			  "ConvertIn"
-	  SID			  "230"
-	  Position		  [295, 385, 335, 415]
-	  ZOrder		  2
-	  ShowName		  off
-	  OutDataTypeStr	  "fixdt(1,5,4)"
-	  RndMeth		  "Nearest"
-	}
-	Block {
-	  BlockType		  DataTypeConversion
 	  Name			  "ConvertOut"
-	  SID			  "245"
-	  Position		  [1905, 385, 1945, 415]
+	  SID			  "267"
+	  Position		  [1870, 385, 1910, 415]
 	  ZOrder		  17
 	  ShowName		  off
-	  OutDataTypeStr	  "fixdt(1,16,0)"
+	  OutDataTypeStr	  "fixdt(1,31,15)"
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Down Sample"
-	  SID			  "237"
+	  SID			  "259"
 	  Ports			  [1, 1]
 	  Position		  [1135, 382, 1170, 418]
 	  ZOrder		  9
@@ -1723,8 +1713,8 @@ Model {
 	  UserData		  "DataTag1"
 	  SourceBlock		  "dspsigops/Downsample"
 	  SourceType		  "Downsample"
-	  N			  "R"
-	  phase			  "0"
+	  N			  "16"
+	  phase			  "2"
 	  InputProcessing	  "Elements as channels (sample based)"
 	  RateOptions		  "Allow multirate processing"
 	  smode			  "Allow multirate"
@@ -1733,8 +1723,20 @@ Model {
 	}
 	Block {
 	  BlockType		  Delay
+	  Name			  "IntDelay1"
+	  SID			  "269"
+	  Ports			  [1, 1]
+	  Position		  [305, 385, 335, 415]
+	  ZOrder		  19
+	  ShowName		  off
+	  InputPortMap		  "u0"
+	  DelayLength		  "1"
+	  InitialCondition	  "0"
+	}
+	Block {
+	  BlockType		  Delay
 	  Name			  "IntDelay2"
-	  SID			  "232"
+	  SID			  "254"
 	  Ports			  [1, 1]
 	  Position		  [510, 385, 540, 415]
 	  ZOrder		  4
@@ -1746,7 +1748,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "IntDelay3"
-	  SID			  "234"
+	  SID			  "256"
 	  Ports			  [1, 1]
 	  Position		  [720, 385, 750, 415]
 	  ZOrder		  6
@@ -1758,7 +1760,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "IntDelay4"
-	  SID			  "236"
+	  SID			  "258"
 	  Ports			  [1, 1]
 	  Position		  [930, 385, 960, 415]
 	  ZOrder		  8
@@ -1770,7 +1772,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "IntSum2"
-	  SID			  "231"
+	  SID			  "253"
 	  Ports			  [2, 1]
 	  Position		  [405, 385, 435, 415]
 	  ZOrder		  3
@@ -1778,14 +1780,14 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "|++"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "fixdt(1,20,4)"
-	  OutDataTypeStr	  "fixdt(1,20,4)"
+	  AccumDataTypeStr	  "fixdt(1,21,5)"
+	  OutDataTypeStr	  "fixdt(1,21,5)"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "IntSum3"
-	  SID			  "233"
+	  SID			  "255"
 	  Ports			  [2, 1]
 	  Position		  [615, 385, 645, 415]
 	  ZOrder		  5
@@ -1793,14 +1795,14 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "|++"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "fixdt(1,20,4)"
-	  OutDataTypeStr	  "fixdt(1,20,4)"
+	  AccumDataTypeStr	  "fixdt(1,21,5)"
+	  OutDataTypeStr	  "fixdt(1,21,5)"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "IntSum4"
-	  SID			  "235"
+	  SID			  "257"
 	  Ports			  [2, 1]
 	  Position		  [825, 385, 855, 415]
 	  ZOrder		  7
@@ -1808,28 +1810,22 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "|++"
 	  InputSameDT		  off
-	  AccumDataTypeStr	  "fixdt(1,20,4)"
-	  OutDataTypeStr	  "fixdt(1,20,4)"
+	  AccumDataTypeStr	  "fixdt(1,21,5)"
+	  OutDataTypeStr	  "fixdt(1,21,5)"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "Output"
-	  SID			  "246"
-	  Position		  [2075, 392, 2105, 408]
+	  SID			  "268"
+	  Position		  [2015, 392, 2045, 408]
 	  ZOrder		  18
 	  IconDisplay		  "Port number"
 	}
 	Line {
 	  SrcBlock		  "Input"
 	  SrcPort		  1
-	  DstBlock		  "ConvertIn"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "ConvertIn"
-	  SrcPort		  1
-	  DstBlock		  "IntSum2"
+	  DstBlock		  "IntDelay1"
 	  DstPort		  1
 	}
 	Line {
@@ -1964,6 +1960,12 @@ Model {
 	  SrcBlock		  "ConvertOut"
 	  SrcPort		  1
 	  DstBlock		  "Output"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "IntDelay1"
+	  SrcPort		  1
+	  DstBlock		  "IntSum2"
 	  DstPort		  1
 	}
       }
@@ -2139,7 +2141,7 @@ MatData {
     "   )          X   !0    !@    @    &          4    (     0    0    !          D    @          \"P<T        !Y0    "
     "   L'-         >4 .    * $   8    (     @         %    \"     $    !     0         %  0 #0    $    G    ;W5T40    "
     "       %)O=6YD36]D90    !/=F5R9FQO=TUO9&4   X   !     !@    @    &          4    (     0    (    !          D    0"
-    "            %$         00 X    X    !@    @    $          4    (     0    <    !         !     '    ;F5A<F5S=  .  "
+    "            &$         40 X    X    !@    @    $          4    (     0    <    !         !     '    ;F5A<F5S=  .  "
     "  .     8    (    !          %    \"     $    (     0         0    \"    '-A='5R871E#@   #@    &    \"     8      "
     "   !0    @    !     0    $         \"0    @            (0 X   #P!@  !@    @    \"          4    (     0    $    ! "
     "         4 !  ,     0   &P   !N;V1E26YD97@   !B;&]C:W1Y<&4   !I;G!O<G0       !O=71P;W)T      !L86)E;         !M86E"
@@ -2165,7 +2167,7 @@ MatData {
     "   P    !@    @    &          4    (               !          D         #@   %     &    \"     8         !0    @  "
     "  !    !     $         \"0   \"           $!Z0        'E       ! >D        !Y0 X    @ 0  !@    @    \"          4 "
     "   (     0    $    !          4 !  -     0   \"<   !S=6U1            4F]U;F1-;V1E     $]V97)F;&]W36]D90  #@   $   "
-    "  &    \"     8         !0    @    !     @    $         \"0   !             T0        !! #@   #@    &    \"     0 "
+    "  &    \"     8         !0    @    !     @    $         \"0   !             U0        !1 #@   #@    &    \"     0 "
     "        !0    @    !    !0    $         $     4   !F;&]O<@    X    P    !@    @    $          4    (     0    0   "
     " !         !  ! !W<F%P#@   #@    &    \"     8         !0    @    !     0    $         \"0    @            00 X   "
     " P!@  !@    @    \"          4    (     0    $    !          4 !  ,     0   &P   !N;V1E26YD97@   !B;&]C:W1Y<&4   !"
@@ -2213,7 +2215,7 @@ MatData {
     "          4    (               !          D         #@   %     &    \"     8         !0    @    !    !     $      "
     "   \"0   \"           +\"#0        'E       \"P@T        !Y0 X    @ 0  !@    @    \"          4    (     0    $   "
     " !          4 !  -     0   \"<   !S=6U1            4F]U;F1-;V1E     $]V97)F;&]W36]D90  #@   $     &    \"     8   "
-    "      !0    @    !     @    $         \"0   !             T0        !! #@   #@    &    \"     0         !0    @   "
+    "      !0    @    !     @    $         \"0   !             U0        !1 #@   #@    &    \"     0         !0    @   "
     " !    !0    $         $     4   !F;&]O<@    X    P    !@    @    $          4    (     0    0    !         !  ! !W"
     "<F%P#@   #@    &    \"     8         !0    @    !     0    $         \"0    @            80 X    P!@  !@    @    \""
     "          4    (     0    $    !          4 !  ,     0   &P   !N;V1E26YD97@   !B;&]C:W1Y<&4   !I;G!O<G0       !O=7"
@@ -2261,7 +2263,7 @@ MatData {
     "          !          D         #@   %     &    \"     8         !0    @    !    !     $         \"0   \"          "
     " $\"*0        'E       ! BD        !Y0 X    @ 0  !@    @    \"          4    (     0    $    !          4 !  -    "
     " 0   \"<   !S=6U1            4F]U;F1-;V1E     $]V97)F;&]W36]D90  #@   $     &    \"     8         !0    @    !    "
-    " @    $         \"0   !             T0        !! #@   #@    &    \"     0         !0    @    !    !0    $         "
+    " @    $         \"0   !             U0        !1 #@   #@    &    \"     0         !0    @    !    !0    $         "
     "$     4   !F;&]O<@    X    P    !@    @    $          4    (     0    0    !         !  ! !W<F%P#@   #@    &    \""
     "     8         !0    @    !     0    $         \"0    @            @0 X    P!@  !@    @    \"          4    (     "
     "0    $    !          4 !  ,     0   &P   !N;V1E26YD97@   !B;&]C:W1Y<&4   !I;G!O<G0       !O=71P;W)T      !L86)E;  "
@@ -2330,7 +2332,7 @@ MatData {
     "   #     &    \"     8         !0    @               $         \"0         .    4     8    (    !@         %    \""
     "     $    $     0         )    (           _)5         >4       /R50        'E #@   \" !   &    \"     (         !"
     "0    @    !     0    $         !0 $  T    !    )P   '-U;5$           !2;W5N9$UO9&4     3W9E<F9L;W=-;V1E   .    0  "
-    "   8    (    !@         %    \"     $    \"     0         )    $            #1         $$ .    .     8    (    !  "
+    "   8    (    !@         %    \"     $    \"     0         )    $            #5         %$ .    .     8    (    !  "
     "        %    \"     $    %     0         0    !0   &9L;V]R    #@   #     &    \"     0         !0    @    !    !  "
     "   $         $  $ '=R87 .    .     8    (    !@         %    \"     $    !     0         )    \"            \"9 #@"
     "   + %   &    \"     (         !0    @    !     0    $         !0 $  P    !    ;    &YO9&5);F1E>    &)L;V-K='EP90 "
@@ -2374,7 +2376,7 @@ MatData {
     " ,     8    (    !@         %    \"                0         )          X   !0    !@    @    &          4    (    "
     " 0    0    !          D    @          \"PDT        !Y0       L)-         >4 .    ( $   8    (     @         %    \""
     "     $    !     0         %  0 #0    $    G    ;W5T40           %)O=6YD36]D90    !/=F5R9FQO=TUO9&4   X   !     !@ "
-    "   @    &          4    (     0    (    !          D    0            -$         00 X    X    !@    @    $         "
+    "   @    &          4    (     0    (    !          D    0            -4         40 X    X    !@    @    $         "
     " 4    (     0    4    !         !     %    9FQO;W(    .    ,     8    (    !          %    \"     $    $     0    "
     "     0  0 =W)A< X    X    !@    @    &          4    (     0    $    !          D    (            *D .    < <   8 "
     "   (     @         %    \"     $    !     0         %  0 #     $   !L    ;F]D94EN9&5X    8FQO8VMT>7!E    :6YP;W)T "
@@ -2402,7 +2404,7 @@ MatData {
     "    !@    @    &          4    (               !          D         #@   %     &    \"     8         !0    @    ! "
     "   !     $         \"0   \"           $290        'E       !$F4        !Y0 X    @ 0  !@    @    \"          4    ("
     "     0    $    !          4 !  -     0   \"<   !S=6U1            4F]U;F1-;V1E     $]V97)F;&]W36]D90  #@   $     & "
-    "   \"     8         !0    @    !     @    $         \"0   !             T0        !! #@   #@    &    \"     0     "
+    "   \"     8         !0    @    !     @    $         \"0   !             U0        !1 #@   #@    &    \"     0     "
     "    !0    @    !    !0    $         $     4   !F;&]O<@    X    P    !@    @    $          4    (     0    0    !  "
     "       !  ! !W<F%P#@   #@    &    \"     8         !0    @    !     0    $         \"0    @            L0 X   \"P!"
     "0  !@    @    \"          4    (     0    $    !          4 !  ,     0   &P   !N;V1E26YD97@   !B;&]C:W1Y<&4   !I;G"
@@ -2448,8 +2450,8 @@ MatData {
     "!         !     %    <FEG:'0    .    ,     8    (    !@         %    \"                0         )          X   !0"
     "    !@    @    &          4    (     0    0    !          D    @          \",G$        !Y0       C)Q         >4 . "
     "   ( $   8    (     @         %    \"     $    !     0         %  0 #0    $    G    <W5M40           %)O=6YD36]D90"
-    "    !/=F5R9FQO=TUO9&4   X   !     !@    @    &          4    (     0    (    !          D    0            -$      "
-    "   00 X    X    !@    @    $          4    (     0    4    !         !     %    9FQO;W(    .    ,     8    (    ! "
+    "    !/=F5R9FQO=TUO9&4   X   !     !@    @    &          4    (     0    (    !          D    0            -4      "
+    "   40 X    X    !@    @    $          4    (     0    4    !         !     %    9FQO;W(    .    ,     8    (    ! "
     "         %    \"     $    $     0         0  0 =W)A< X    X    !@    @    &          4    (     0    $    !       "
     "   D    (            ,$ .    L 4   8    (     @         %    \"     $    !     0         %  0 #     $   !L    ;F]D"
     "94EN9&5X    8FQO8VMT>7!E    :6YP;W)T        ;W5T<&]R=       ;&%B96P         ;6%I;E!A<F%M    <&%R86U,:7-T    ;W)I96"

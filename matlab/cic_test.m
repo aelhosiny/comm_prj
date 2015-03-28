@@ -32,18 +32,17 @@ simtime = (length(TS))*ts_in;
 
 
 sim('cic_test_mdl.mdl',simtime);
-% sim('cic_test_mdl.mdl');
 
-% cic_out_f = cic_out.*2^15;
+cic_out_f = cic_out.*2^15;
 % cic_out_f1 = cic_out1.*2^5;
 % sec1_out_f = sec1_out.*2^5;
 % sec1_in_f = sec1_in.*2^5;
 % sec2_out_f = sec2_out.*2^5;
 % sec2_out1_f = sec2_out1.*2^5;
 
-% file_out = strcat('cic_out_',num2str(R),'.txt');
-% dlmwrite(file_out, cic_out_f, '\r');
-% dlmwrite('cic_out1.txt', cic_out_f1, '\r');
+file_out = strcat('cic_out_',num2str(R),'.txt');
+dlmwrite(file_out, cic_out_f, '\r');
+dlmwrite('cic_out1.txt', cic_out_f, '\r');
 
 
 % dlmwrite('sec1_out.txt', sec1_out_f, '\r');

@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 19-03-2015
+-- Last update: 28-03-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ entity digcore is
     -- input system clock, 625MHz clock input
     sys_clk       : in std_logic;
     -- decimation ratio, control freq of divided clock
-    dec_ratio     : in std_logic_vector(1 downto 0);
+    --dec_ratio     : in std_logic_vector(1 downto 0);
     -- tdc output, input to digtop
     tdc_out       : in std_logic_vector(4 downto 0);
     -- enable decimator
@@ -50,7 +50,7 @@ architecture behav of digcore is
   signal clk_625mhz_s : std_logic;      -- [out]
   signal clk_lf_s     : std_logic;      -- [out]
   signal cic_in_s     : std_logic_vector(5 downto 0);
-  signal cic_out_s    : std_logic_vector(9 downto 0);
+  signal cic_out_s    : std_logic_vector(15 downto 0);
   signal dec_vldout_s : std_logic;
   
 begin  -- architecture behav
@@ -65,19 +65,18 @@ begin  -- architecture behav
       enable_digclk => enable_digclk,   -- [in  std_logic]
       sys_clk       => sys_clk,         -- [in  std_logic]
       dec_vldout    => dec_vldout_s,    -- [in  std_logic]
-      dec_ratio     => dec_ratio,       -- [in  std_logic_vector(1 downto 0)]
+      dec_ratio     => "10",            -- [in  std_logic_vector(1 downto 0)]
       dig_rstn      => dig_rstn_s,      -- [out std_logic]
       clk_625mhz    => clk_625mhz_s,    -- [out std_logic]
       clk_lf        => clk_lf_s);       -- [out std_logic]
 
-  decimation_1 : entity work.decimation
+  decimator_1 : entity work.decimator
     port map (
       clk        => clk_625mhz_s,       -- [in  std_logic]
-      enable     => '1',                -- [in  std_logic]
+      clk_enable => enable_dec,         -- [in  std_logic]
       rstn       => dig_rstn_s,         -- [in  std_logic]
-      dec_ratio  => dec_ratio,          -- [in  std_logic_vector(1 downto 0)]
       filter_in  => cic_in_s,           -- [in  std_logic_vector(5 downto 0)]
-      filter_out => cic_out_s,          -- [out std_logic_vector(9 downto 0)]
+      filter_out => cic_out_s,          -- [out std_logic_vector(15 downto 0)]
       ce_out     => dec_vldout_s);      -- [out std_logic]
 
 

@@ -5,7 +5,7 @@
 -- File       : decimator_tb.vhd
 -- Author     : amr  <amr@amr-laptop>
 -- Created    : 17-03-2015
--- Last update: 17-03-2015
+-- Last update: 28-03-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ architecture behav of decimator_tb is
   signal dec_ratio  : std_logic_vector(1 downto 0) := "00";             -- [in]
   signal filter_in  : std_logic_vector(5 downto 0) := (others => '0');  -- [in]
   -- outputs
-  signal filter_out : std_logic_vector(9 downto 0);  -- [out]
+  signal filter_out : std_logic_vector(15 downto 0);  -- [out]
   signal ce_out     : std_logic;        -- [out]
 
   signal sys_clk    : std_logic := '0';
@@ -106,12 +106,12 @@ begin  -- architecture behav
     end if;
   end process wr_pr;
 
-  decimation_1 : entity work.decimation
+  decimator_1 : entity work.decimator
     port map (
       clk        => clk,                -- [in  std_logic]
-      enable     => enable,             -- [in  std_logic]
+      clk_enable     => enable,             -- [in  std_logic]
       rstn       => rstn,               -- [in  std_logic]
-      dec_ratio  => dec_ratio,          -- [in  std_logic_vector(1 downto 0)]
+      --dec_ratio  => dec_ratio,          -- [in  std_logic_vector(1 downto 0)]
       filter_in  => filter_in,          -- [in  std_logic_vector(5 downto 0)]
       filter_out => filter_out,         -- [out std_logic_vector(9 downto 0)]
       ce_out     => ce_out);            -- [out std_logic]
