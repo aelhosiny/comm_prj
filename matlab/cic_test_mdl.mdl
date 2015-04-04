@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.283"
+    ComputedModelVersion    "1.303"
     NumModelReferences	    0
     NumTestPointedSignals   13
     TestPointedSignal {
@@ -86,7 +86,7 @@ Model {
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/loop_filter/K2*alpha"
+      FullBlockPath	      "cic_test_mdl/loop_filter/alpha"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
@@ -116,7 +116,7 @@ Model {
       Cell		      "ClockEnableInputPort"
       Cell		      "enable"
       Cell		      "HDLSubsystem"
-      Cell		      "cic_test_mdl/cic16"
+      Cell		      "cic_test_mdl/loop_filter"
       Cell		      "InlineConfigurations"
       Cell		      "off"
       Cell		      "ResetAssertedLevel"
@@ -167,11 +167,11 @@ Model {
 	$ObjectID		6
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"196"
 	Extents			[1367.0, 676.0]
-	ZoomFactor		[1.4169312169312172]
-	Offset			[10.119492158327166, -10.42454869538831]
+	ZoomFactor		[1.7853333333333332]
+	Offset			[12.158327109783421, 38.798752275485384]
       }
     }
   }
@@ -181,9 +181,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Mar 28 17:08:49 2015"
-  RTWModifiedTimeStamp	  349463327
-  ModelVersionFormat	  "1.%<AutoIncrement:283>"
+  LastModifiedDate	  "Sat Apr 04 17:23:19 2015"
+  RTWModifiedTimeStamp	  350068994
+  ModelVersionFormat	  "1.%<AutoIncrement:303>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -803,7 +803,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "HDL Code Generation"
-      ConfigPrmDlgPosition     [ 0, 0, 1063, 629 ] 
+      ConfigPrmDlgPosition     [ 268, 122, 1331, 751 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -1085,7 +1085,7 @@ Model {
   System {
     Name		    "cic_test_mdl"
     Location		    [0, 24, 1600, 876]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1096,9 +1096,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "142"
+    ZoomFactor		    "135"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "269"
+    SIDHighWatermark	    "356"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1181,10 +1181,22 @@ Model {
       }
     }
     Block {
+      BlockType		      Delay
+      Name		      "IntDelay3"
+      SID		      "270"
+      Ports		      [1, 1]
+      Position		      [785, 245, 815, 275]
+      ZOrder		      105
+      ShowName		      off
+      InputPortMap	      "u0"
+      DelayLength	      "1"
+      InitialCondition	      "0"
+    }
+    Block {
       BlockType		      Gain
       Name		      "K2"
       SID		      "249"
-      Position		      [590, 245, 620, 275]
+      Position		      [610, 245, 640, 275]
       ZOrder		      102
       Gain		      "1/(2^15)"
       ParamDataTypeStr	      "double"
@@ -1675,7 +1687,7 @@ Model {
       Name		      "lf_out_final"
       SID		      "208"
       Ports		      [1]
-      Position		      [835, 135, 895, 165]
+      Position		      [880, 115, 940, 145]
       ZOrder		      97
       BlockMirror	      on
       VariableName	      "lf_out"
@@ -1687,7 +1699,7 @@ Model {
       Name		      "loop_filter"
       SID		      "196"
       Ports		      [1, 1]
-      Position		      [805, 250, 845, 310]
+      Position		      [850, 230, 890, 290]
       ZOrder		      96
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       MinAlgLoopOccurrences   off
@@ -1700,7 +1712,7 @@ Model {
       System {
 	Name			"loop_filter"
 	Location		[0, 24, 1600, 876]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1711,7 +1723,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"237"
+	ZoomFactor		"179"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1726,6 +1738,19 @@ Model {
 	    DataLogging		    on
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Delay
+	  Name			  "IntDelay1"
+	  SID			  "273"
+	  Ports			  [1, 1]
+	  Position		  [550, 270, 580, 300]
+	  ZOrder		  86
+	  BlockMirror		  on
+	  ShowName		  off
+	  InputPortMap		  "u0"
+	  DelayLength		  "1"
+	  InitialCondition	  "0"
 	}
 	Block {
 	  BlockType		  Delay
@@ -1749,13 +1774,23 @@ Model {
 	}
 	Block {
 	  BlockType		  Gain
+	  Name			  "K1"
+	  SID			  "274"
+	  Position		  [540, 320, 570, 350]
+	  ZOrder		  87
+	  Gain			  "K1"
+	  ParamDataTypeStr	  "fixdt(1,9,0)"
+	  OutDataTypeStr	  "fixdt(1,15,10)"
+	}
+	Block {
+	  BlockType		  Gain
 	  Name			  "K2"
 	  SID			  "200"
 	  Position		  [160, 195, 190, 225]
 	  ZOrder		  74
 	  Gain			  "K2"
-	  ParamDataTypeStr	  "fixdt(1,6,7)"
-	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  ParamDataTypeStr	  "fixdt(1,5,9)"
+	  OutDataTypeStr	  "fixdt(1,16,20)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1766,13 +1801,13 @@ Model {
 	}
 	Block {
 	  BlockType		  Gain
-	  Name			  "K2*alpha"
+	  Name			  "alpha"
 	  SID			  "201"
 	  Position		  [235, 265, 265, 295]
 	  ZOrder		  76
 	  Gain			  "K3"
-	  ParamDataTypeStr	  "fixdt(1,6,5)"
-	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  ParamDataTypeStr	  "fixdt(1,10,9)"
+	  OutDataTypeStr	  "fixdt(1,16,20)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1791,8 +1826,7 @@ Model {
 	  IconShape		  "round"
 	  Inputs		  "+-"
 	  InputSameDT		  off
-	  OutDataTypeStr	  "fixdt(1,17,18)"
-	  SaturateOnIntegerOverflow off
+	  OutDataTypeStr	  "fixdt(1,16,20)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1810,7 +1844,7 @@ Model {
 	  ZOrder		  80
 	  IconShape		  "round"
 	  InputSameDT		  off
-	  OutDataTypeStr	  "fixdt(1,17,18)"
+	  OutDataTypeStr	  "fixdt(1,16,20)"
 	  Port {
 	    PortNumber		    1
 	    TestPoint		    on
@@ -1818,6 +1852,28 @@ Model {
 	    DataLogging		    on
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "lf_add3"
+	  SID			  "272"
+	  Ports			  [2, 1]
+	  Position		  [525, 205, 555, 235]
+	  ZOrder		  85
+	  IconShape		  "round"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "fixdt(1,15,10)"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "lf_add4"
+	  SID			  "275"
+	  Ports			  [2, 1]
+	  Position		  [650, 270, 680, 300]
+	  ZOrder		  88
+	  IconShape		  "round"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "fixdt(1,15,10)"
 	}
 	Block {
 	  BlockType		  ToWorkspace
@@ -1882,7 +1938,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "Out1"
 	  SID			  "207"
-	  Position		  [555, 233, 585, 247]
+	  Position		  [740, 278, 770, 292]
 	  ZOrder		  84
 	  IconDisplay		  "Port number"
 	}
@@ -1902,7 +1958,7 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "K2*alpha"
+	  SrcBlock		  "alpha"
 	  SrcPort		  1
 	  Points		  [25, 0]
 	  DstBlock		  "lf_add1"
@@ -1925,7 +1981,7 @@ Model {
 	  }
 	  Branch {
 	    Points		    [0, 70]
-	    DstBlock		    "K2*alpha"
+	    DstBlock		    "alpha"
 	    DstPort		    1
 	  }
 	}
@@ -1961,17 +2017,61 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [16, 0]
+	    Points		    [16, 0; 0, -53]
 	    Branch {
-	      DstBlock		      "Out1"
-	      DstPort		      1
+	      Points		      [31, 0]
+	      Branch {
+		Points			[0, 148]
+		DstBlock		"K1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[39, 0]
+		DstBlock		"lf_add3"
+		DstPort			1
+	      }
 	    }
 	    Branch {
-	      Points		      [0, -64; 65, 0; 0, -71]
+	      Points		      [0, -11; 65, 0; 0, -71]
 	      DstBlock		      "lf_out2"
 	      DstPort		      1
 	    }
 	  }
+	}
+	Line {
+	  SrcBlock		  "IntDelay1"
+	  SrcPort		  1
+	  Points		  [-5, 0]
+	  DstBlock		  "lf_add3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "lf_add3"
+	  SrcPort		  1
+	  Points		  [53, 0; 0, 24]
+	  Branch {
+	    Points		    [52, 0]
+	    DstBlock		    "lf_add4"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 41]
+	    DstBlock		    "IntDelay1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "K1"
+	  SrcPort		  1
+	  Points		  [90, 0]
+	  DstBlock		  "lf_add4"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "lf_add4"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
 	}
       }
     }
@@ -1979,7 +2079,7 @@ Model {
       BlockType		      Outport
       Name		      "Out1"
       SID		      "98"
-      Position		      [935, 273, 965, 287]
+      Position		      [980, 253, 1010, 267]
       ZOrder		      85
       IconDisplay	      "Port number"
     }
@@ -2039,6 +2139,32 @@ Model {
       DstPort		      4
     }
     Line {
+      SrcBlock		      "cic16"
+      SrcPort		      1
+      DstBlock		      "K2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "ConvertOut"
+      SrcPort		      1
+      Points		      [16, 0]
+      Branch {
+	Points			[0, -165]
+	DstBlock		"To Workspace1"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"IntDelay3"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "K2"
+      SrcPort		      1
+      DstBlock		      "ConvertOut"
+      DstPort		      1
+    }
+    Line {
       SrcBlock		      "loop_filter"
       SrcPort		      1
       Points		      [60, 0]
@@ -2052,31 +2178,16 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "cic16"
+      SrcBlock		      "IntDelay3"
       SrcPort		      1
-      DstBlock		      "K2"
+      DstBlock		      "loop_filter"
       DstPort		      1
     }
-    Line {
-      SrcBlock		      "ConvertOut"
-      SrcPort		      1
-      Points		      [16, 0]
-      Branch {
-	Points			[0, 20]
-	DstBlock		"loop_filter"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -165]
-	DstBlock		"To Workspace1"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "K2"
-      SrcPort		      1
-      DstBlock		      "ConvertOut"
-      DstPort		      1
+    Annotation {
+      SID		      "271"
+      Name		      " "
+      Position		      [408, 394]
+      ZOrder		      -1
     }
   }
 }

@@ -2,9 +2,22 @@ clc;
 clear all;
 close all;
 
-K1=122;
-K2=0.132813;
-K3=0.90625;
+K1_min=70;
+K1_max=248;
+
+K2_max=0.0253754;
+K2_min=0.00205994;
+
+K3_max=0.90625;
+K3_min=0.850128;
+
+K2=K2_min;
+K3=K3_min;
+K1=K1_min;
+
+% K2=K2_max;
+% K3=K3_max;
+% K1=K1_max;
 
 fs_in = 625e6;
 ts_in = 1/625/1e6;
@@ -39,11 +52,13 @@ cic_out_f = cic_out.*2^15;
 % sec1_in_f = sec1_in.*2^5;
 % sec2_out_f = sec2_out.*2^5;
 % sec2_out1_f = sec2_out1.*2^5;
+lf_out_f = lf_out.*2^18;
 
 file_out = strcat('cic_out_',num2str(R),'.txt');
 dlmwrite(file_out, cic_out_f, '\r');
 dlmwrite('cic_out1.txt', cic_out_f, '\r');
 
+dlmwrite('lf_out.txt', lf_out_f, '\r');
 
 % dlmwrite('sec1_out.txt', sec1_out_f, '\r');
 % dlmwrite('sec1_in.txt', sec1_in_f, '\r');
@@ -60,6 +75,6 @@ dlmwrite('cic_out1.txt', cic_out_f, '\r');
 % 
 % plot_spectrum(cic_in, fs_in);
 plot_spectrum(cic_out, fs_in/R);
-% plot_spectrum(lf_out1, fs_in/R);
+plot_spectrum(lf_out1, fs_in/R);
 plot_spectrum(lf_out, fs_in/R);
 % plot_spectrum(cic_out1, fs_in/R);
