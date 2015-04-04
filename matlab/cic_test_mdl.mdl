@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.303"
+    ComputedModelVersion    "1.305"
     NumModelReferences	    0
     NumTestPointedSignals   13
     TestPointedSignal {
@@ -65,7 +65,7 @@ Model {
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "cic_test_mdl/loop_filter/In1"
+      FullBlockPath	      "cic_test_mdl/loop_filter/lf_in"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
@@ -167,11 +167,11 @@ Model {
 	$ObjectID		6
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"196"
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
 	Extents			[1367.0, 676.0]
-	ZoomFactor		[1.7853333333333332]
-	Offset			[12.158327109783421, 38.798752275485384]
+	ZoomFactor		[1.3525252525252525]
+	Offset			[9.6489917849141147, -9.3433423088592491]
       }
     }
   }
@@ -181,9 +181,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Apr 04 17:23:19 2015"
-  RTWModifiedTimeStamp	  350068994
-  ModelVersionFormat	  "1.%<AutoIncrement:303>"
+  LastModifiedDate	  "Sat Apr 04 21:44:01 2015"
+  RTWModifiedTimeStamp	  350084497
+  ModelVersionFormat	  "1.%<AutoIncrement:305>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1085,7 +1085,7 @@ Model {
   System {
     Name		    "cic_test_mdl"
     Location		    [0, 24, 1600, 876]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1712,7 +1712,7 @@ Model {
       System {
 	Name			"loop_filter"
 	Location		[0, 24, 1600, 876]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1726,7 +1726,7 @@ Model {
 	ZoomFactor		"179"
 	Block {
 	  BlockType		  Inport
-	  Name			  "In1"
+	  Name			  "lf_in"
 	  SID			  "197"
 	  Position		  [20, 168, 50, 182]
 	  ZOrder		  83
@@ -1780,7 +1780,7 @@ Model {
 	  ZOrder		  87
 	  Gain			  "K1"
 	  ParamDataTypeStr	  "fixdt(1,9,0)"
-	  OutDataTypeStr	  "fixdt(1,15,10)"
+	  OutDataTypeStr	  "fixdt(1,16,11)"
 	}
 	Block {
 	  BlockType		  Gain
@@ -1862,7 +1862,7 @@ Model {
 	  ZOrder		  85
 	  IconShape		  "round"
 	  InputSameDT		  off
-	  OutDataTypeStr	  "fixdt(1,15,10)"
+	  OutDataTypeStr	  "fixdt(1,16,11)"
 	}
 	Block {
 	  BlockType		  Sum
@@ -1873,7 +1873,7 @@ Model {
 	  ZOrder		  88
 	  IconShape		  "round"
 	  InputSameDT		  off
-	  OutDataTypeStr	  "fixdt(1,15,10)"
+	  OutDataTypeStr	  "fixdt(1,16,11)"
 	}
 	Block {
 	  BlockType		  ToWorkspace
@@ -1936,7 +1936,7 @@ Model {
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "Out1"
+	  Name			  "lf_out"
 	  SID			  "207"
 	  Position		  [740, 278, 770, 292]
 	  ZOrder		  84
@@ -1986,7 +1986,7 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "In1"
+	  SrcBlock		  "lf_in"
 	  SrcPort		  1
 	  Points		  [74, 0]
 	  Branch {
@@ -2070,7 +2070,7 @@ Model {
 	Line {
 	  SrcBlock		  "lf_add4"
 	  SrcPort		  1
-	  DstBlock		  "Out1"
+	  DstBlock		  "lf_out"
 	  DstPort		  1
 	}
       }

@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 28-03-2015
+-- Last update: 04-04-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -39,7 +39,9 @@ entity digcore is
     -- tdc output, input to digtop
     tdc_out       : in std_logic_vector(4 downto 0);
     -- enable decimator
-    enable_dec    : in std_logic
+    enable_dec    : in std_logic;
+    -- enable loop filter
+    enable_lf     : in std_logic
     );
 
 end entity digcore;
@@ -52,6 +54,10 @@ architecture behav of digcore is
   signal cic_in_s     : std_logic_vector(5 downto 0);
   signal cic_out_s    : std_logic_vector(15 downto 0);
   signal dec_vldout_s : std_logic;
+  signal enable_dec_s : std_logic;
+  signal lf_out_s     : std_logic_vector(15 downto 0);
+  signal lf_vldout_s  : std_logic;
+  signal enable_lf_s  : std_logic;
   
 begin  -- architecture behav
 
@@ -70,14 +76,42 @@ begin  -- architecture behav
       clk_625mhz    => clk_625mhz_s,    -- [out std_logic]
       clk_lf        => clk_lf_s);       -- [out std_logic]
 
+
+  signal_sync_1 : entity work.signal_sync
+    generic map (
+      polarity_g => '0')                -- [std_logic]
+    port map (
+      rstn     => dig_rstn_s,           -- [in  std_logic]
+      clk      => clk_625mhz_s,         -- [in  std_logic]
+      async_in => enable_dec,           -- [in  std_logic]
+      sync_out => enable_dec_s);        -- [out std_logic]
+
+  signal_sync_2 : entity work.signal_sync
+    generic map (
+      polarity_g => '0')                -- [std_logic]
+    port map (
+      rstn     => dig_rstn_s,           -- [in  std_logic]
+      clk      => clk_625mhz_s,         -- [in  std_logic]
+      async_in => enable_lf,            -- [in  std_logic]
+      sync_out => enable_lf_s);         -- [out std_logic]
+
+
   decimator_1 : entity work.decimator
     port map (
       clk        => clk_625mhz_s,       -- [in  std_logic]
-      clk_enable => enable_dec,         -- [in  std_logic]
+      clk_enable => enable_dec_s,       -- [in  std_logic]
       rstn       => dig_rstn_s,         -- [in  std_logic]
       filter_in  => cic_in_s,           -- [in  std_logic_vector(5 downto 0)]
       filter_out => cic_out_s,          -- [out std_logic_vector(15 downto 0)]
       ce_out     => dec_vldout_s);      -- [out std_logic]
 
+  loop_filter_1 : entity work.loop_filter
+    port map (
+      clk    => clk_lf_s,               -- [in  std_logic]
+      rstn   => dig_rstn_s,             -- [in  std_logic]
+      enable => enable_dec_s,           -- [in  std_logic]
+      lf_in  => cic_out_s,              -- [in  std_logic_vector(15 downto 0)]
+      ce_out => lf_vldout_s,            -- [out std_logic]
+      lf_out => lf_out_s);              -- [out std_logic_vector(16 downto 0)]
 
 end architecture behav;
