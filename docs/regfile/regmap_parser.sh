@@ -2,7 +2,7 @@
 
 sheet=$1
 rm -f interface.txt
-
+rm -f default.txt
 
 xls2csv $sheet > tmp.csv
 length=`cat tmp.csv | wc -l`
@@ -50,17 +50,26 @@ do
          fi
          
          regtype=`echo $types | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
+         regdefault=`echo $defaults | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
          
          if [ $extreg -eq 0 ] && [ $nregs -gt 1 ] && [ "$regtype" != "x" ] ;
          then
             regname=`echo $reg_row | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
             regwidth=1
-            regdefault=`echo $defaults | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
             regindex=`expr 9 - $k`
             echo "$regname,$regwidth,$regindex,$regtype,$regdefault">> interface.txt 
          fi
+         
+         if [ "$regtype" = "w" ]
+         then
+            add_dflt="$add_dflt$regdefault"
+         else
+            zero=0
+            add_dflt="$add_dflt$zero"
+         fi
       done
-      
+      echo "$address,$add_dflt" >> default.txt
+      add_dflt=""
    fi
    
    if [ $j -lt 3 ] 
