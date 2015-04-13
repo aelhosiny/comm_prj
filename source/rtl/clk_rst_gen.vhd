@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 19-03-2015
+-- Last update: 10-04-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -53,6 +53,7 @@ end entity clk_rst_gen;
 architecture behav of clk_rst_gen is
 
   signal reset_in_s         : std_logic;
+  signal sys_clk_gated_s    : std_logic;
   signal rstn_s             : std_logic;
   signal enable_digclk_s    : std_logic;
   signal enable_digclk_ne_s : std_logic;
@@ -70,12 +71,14 @@ begin  -- architecture behav
   clk_625mhz <= clk_625mhz_s;
   clk_lf     <= clk_lf_s;
 
+  -- Synchronize the reset to sys_clk
   reset_sync_1 : entity work.reset_sync
     port map (
       reset_in  => reset_in_s,          -- [in  std_logic]
       clk       => sys_clk,             -- [in  std_logic]
       reset_out => rstn_s);             -- [out std_logic]
 
+  -- synchronize the clock enable control to sys_clk
   signal_sync_1 : entity work.signal_sync
     generic map (
       polarity_g => '0')                -- [std_logic]
@@ -85,6 +88,7 @@ begin  -- architecture behav
       async_in => enable_digclk,        -- [in  std_logic]
       sync_out => enable_digclk_s);     -- [out std_logic]
 
+  -- retime the clock enable to negative edge
   clk_pr1 : process (sys_clk, rstn_s) is
   begin  -- process clk_pr1
     if rstn_s = '0' then                -- asynchronous reset (active low)
@@ -94,7 +98,18 @@ begin  -- architecture behav
     end if;
   end process clk_pr1;
 
-  clk_625mhz_s <= sys_clk and enable_digclk_ne_s;
+  -- clock gating statement
+  sys_clk_gated_s <= sys_clk and enable_digclk_ne_s;
+
+
+  -- divide clock by 2 to get 625MHz clock
+  reset_sync_1 : entity work.clk_divider
+    port map (
+      rstn    => rstn_s,
+      clk_in  => sys_clk_gated_s,
+      clk_out => clk_625mhz_s);
+
+
 
   with dec_ratio select
     clkinv_index_s <=

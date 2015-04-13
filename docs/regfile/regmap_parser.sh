@@ -14,10 +14,12 @@ IFS="
 "
 
 j=1
+l=1
+
 for i in `cat regmap.csv`
 do
 
-   nullcell=0
+   nullcell_count=0
    nregs=0
    reglist=""
    
@@ -40,26 +42,38 @@ do
       
       for k in `seq 2 9`
       do
+         ## detect multi-bit registers
          extreg=`echo $reg_row | grep -c '\['`
-         n=`echo $reg_row | awk -F',' '{print $'$k'}' | grep -c "\""`
-         if [ $n -eq 0 ]
+         
+         ## get number of null cells, number of registers
+         nullcell=`echo $reg_row | awk -F',' '{print $'$k'}' | grep -c "\""`
+         if [ $nullcell -eq 0 ]
          then
-            nullcell=`expr $nullcell + 1`
+            nullcell_count=`expr $nullcell_count + 1`
          else
             nregs=`expr $nregs + 1`
          fi
+         ##########################################################
          
+         ## get register type and default value
          regtype=`echo $types | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
          regdefault=`echo $defaults | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
          
+         ## extract regfile interface
          if [ $extreg -eq 0 ] && [ $nregs -gt 1 ] && [ "$regtype" != "x" ] ;
          then
             regname=`echo $reg_row | awk -F',' '{print $'$k'}' | sed 's_\"__g'`
             regwidth=1
             regindex=`expr 9 - $k`
-            echo "$regname,$regwidth,$regindex,$regtype,$regdefault">> interface.txt 
+            echo "$regname,$regwidth,$regindex,$regtype,$regdefault">> interface.txt
+         elif [ $extreg -eq 1 ] && [ "$regtype" != "x" ] && [ $nullcell -eq 0 ];
+         then
+            regname=`echo $reg_row | awk -F',' '{print $'$k'}' | sed 's_\"__g' | awk -F"[" '{print $1}'`
+            regwidth=`echo $reg_row | awk -F',' '{print $'$k'}' | sed 's_\"__g' | awk -F"[" '{print $2}' | awk -F":" '{print $1}'`
+            regindex=`expr 9 - $k`
          fi
-         
+         ##########################################################
+         ## extract default values for each register space
          if [ "$regtype" = "w" ]
          then
             add_dflt="$add_dflt$regdefault"
@@ -67,10 +81,11 @@ do
             zero=0
             add_dflt="$add_dflt$zero"
          fi
-      done
+      done ## for k in `seq 2 9`
+      
       echo "$address,$add_dflt" >> default.txt
       add_dflt=""
-   fi
+   fi ## if [ $j -eq 3 ]
    
    if [ $j -lt 3 ] 
    then   
@@ -78,7 +93,8 @@ do
    else
       j=1
    fi
-done
+   l=`expr $l + 1`
+done ## for i in `cat regmap.csv`
 
 
 

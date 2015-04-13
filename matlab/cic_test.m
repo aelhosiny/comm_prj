@@ -2,23 +2,6 @@ clc;
 clear all;
 close all;
 
-K1_min=70;
-K1_max=248;
-
-K2_max=0.0253754;
-K2_min=0.00205994;
-
-K3_max=0.90625;
-K3_min=0.850128;
-
-K2=K2_min;
-K3=K3_min;
-K1=K1_min;
-
-% K2=K2_max;
-% K3=K3_max;
-% K1=K1_max;
-
 fs_in = 625e6;
 ts_in = 1/625/1e6;
 
@@ -44,6 +27,7 @@ simtime = (length(TS))*ts_in;
 
 
 
+lf_param;
 sim('cic_test_mdl.mdl',simtime);
 
 cic_out_f = cic_out.*2^15;
@@ -75,6 +59,9 @@ dlmwrite('lf_out.txt', lf_out_f, '\r');
 % 
 % plot_spectrum(cic_in, fs_in);
 plot_spectrum(cic_out, fs_in/R);
-plot_spectrum(lf_out1, fs_in/R);
+% plot_spectrum(lf_out1, fs_in/R);
 plot_spectrum(lf_out, fs_in/R);
+% plot_spectrum(lf2_out, fs_in/R);
 % plot_spectrum(cic_out1, fs_in/R);
+
+% plot_tf(cic_out, lf_out, fs_in/R);
