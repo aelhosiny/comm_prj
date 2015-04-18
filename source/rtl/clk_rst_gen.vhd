@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 10-04-2015
+-- Last update: 18-04-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ begin  -- architecture behav
 
 
   -- divide clock by 2 to get 625MHz clock
-  reset_sync_1 : entity work.clk_divider
+  reset_sync_2 : entity work.clk_divider
     port map (
       rstn    => rstn_s,
       clk_in  => sys_clk_gated_s,
