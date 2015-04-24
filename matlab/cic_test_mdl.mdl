@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.370"
+    ComputedModelVersion    "1.372"
     NumModelReferences	    0
     NumTestPointedSignals   7
     TestPointedSignal {
@@ -157,9 +157,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Apr 18 15:28:03 2015"
-  RTWModifiedTimeStamp	  351271680
-  ModelVersionFormat	  "1.%<AutoIncrement:370>"
+  LastModifiedDate	  "Wed Apr 22 22:33:02 2015"
+  RTWModifiedTimeStamp	  351642225
+  ModelVersionFormat	  "1.%<AutoIncrement:372>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -779,7 +779,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "HDL Code Generation/Global Settings"
-      ConfigPrmDlgPosition     [ 268, 122, 1331, 751 ] 
+      ConfigPrmDlgPosition     [ 0, 0, 1067, 687 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -1961,32 +1961,34 @@ Model {
 	Line {
 	  SrcBlock		  "CastCAS"
 	  SrcPort		  1
-	  Points		  [0, 0]
+	  Points		  [10, 0]
+	  Branch {
+	    Points		    [0, 300]
+	    Branch {
+	      DstBlock		      "a(2)"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 400]
+	      DstBlock		      "a(3)"
+	      DstPort		      1
+	    }
+	  }
 	  Branch {
 	    DstBlock		    "Output"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [10, 0; 0, 300]
-	    DstBlock		    "a(2)"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [10, 0; 0, 700]
-	    DstBlock		    "a(3)"
 	    DstPort		    1
 	  }
 	}
 	Line {
 	  SrcBlock		  "ConvertIn"
 	  SrcPort		  1
-	  Points		  [0, 0]
+	  Points		  [45, 0]
 	  Branch {
 	    DstBlock		    "b(1)"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [45, 0; 0, 400]
+	    Points		    [0, 400]
 	    DstBlock		    "b(2)"
 	    DstPort		    1
 	  }
