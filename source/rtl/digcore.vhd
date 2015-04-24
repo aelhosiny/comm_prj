@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 18-04-2015
+-- Last update: 25-04-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -115,13 +115,13 @@ begin  -- architecture behav
       clk        => clk_lf_s,           -- [in  std_logic]
       rstn       => dig_rstn_s,         -- [in  std_logic]
       enable     => enable_dec_s,       -- [in  std_logic]
-      Inputrsvd  => cic_out_s,          -- [in  std_logic_vector(15 downto 0)]
+      filter_in  => cic_out_s,          -- [in  std_logic_vector(15 downto 0)]
       b1         => lf_b1,              -- [in  std_logic_vector(15 downto 0)]
       b2         => lf_b2,              -- [in  std_logic_vector(15 downto 0)]
       a2         => lf_a2,              -- [in  std_logic_vector(15 downto 0)]
       a3         => lf_a3,              -- [in  std_logic_vector(15 downto 0)]
       ceout      => lf_vldout_s,        -- [out std_logic]
-      Outputrsvd => lf_out_s);          -- [out std_logic_vector(15 downto 0)]
+      filter_out => lf_out_s);          -- [out std_logic_vector(15 downto 0)]
 
 
 end architecture behav;
