@@ -11,7 +11,7 @@ Model {
       Name		      "Out1"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.382"
+    ComputedModelVersion    "1.384"
     NumModelReferences	    0
     NumTestPointedSignals   7
     TestPointedSignal {
@@ -141,11 +141,11 @@ Model {
 	Object {
 	  $ObjectID		  7
 	  IsActive		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "708"
+	  ViewObjType		  "SimulinkTopLevel"
+	  LoadSaveID		  "0"
 	  Extents		  [1367.0, 675.0]
-	  ZoomFactor		  [0.86673399651489536]
-	  Offset		  [111.97187137751143, 368.60522121329211]
+	  ZoomFactor		  [1.3525252525252525]
+	  Offset		  [9.6489917849141147, 36.085906868465244]
 	}
 	PropName		"EditorsInfo"
       }
@@ -157,9 +157,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "amr"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue May 05 00:07:10 2015"
-  RTWModifiedTimeStamp	  352685228
-  ModelVersionFormat	  "1.%<AutoIncrement:382>"
+  LastModifiedDate	  "Tue May 05 00:40:07 2015"
+  RTWModifiedTimeStamp	  352686256
+  ModelVersionFormat	  "1.%<AutoIncrement:384>"
   ConfigurationManager	  "None"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
@@ -1061,7 +1061,7 @@ Model {
   System {
     Name		    "cic_test_mdl"
     Location		    [0, 24, 1600, 876]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1074,7 +1074,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "135"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "723"
+    SIDHighWatermark	    "739"
     Block {
       BlockType		      Constant
       Name		      "Constant"
@@ -1740,11 +1740,11 @@ Model {
     Block {
       BlockType		      SubSystem
       Name		      "loop_filter"
-      SID		      "708"
+      SID		      "724"
       Tag		      "FilterWizardSubSystem"
       Ports		      [1, 1]
       Position		      [830, 340, 905, 380]
-      ZOrder		      140
+      ZOrder		      141
       UserDataPersistent      on
       UserData		      "DataTag2"
       ErrorFcn		      "dspFilterRealizedInBasicElemsAlgLoopErrFcnCallback"
@@ -1758,7 +1758,7 @@ Model {
       System {
 	Name			"loop_filter"
 	Location		[0, 24, 1600, 876]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1773,7 +1773,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "Input"
-	  SID			  "709"
+	  SID			  "725"
 	  Position		  [285, 392, 315, 408]
 	  ZOrder		  1
 	  IconDisplay		  "Port number"
@@ -1781,7 +1781,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "BodyDelay2"
-	  SID			  "719"
+	  SID			  "735"
 	  Ports			  [1, 1]
 	  Position		  [885, 465, 915, 495]
 	  ZOrder		  11
@@ -1794,7 +1794,7 @@ Model {
 	Block {
 	  BlockType		  Delay
 	  Name			  "BodyDelay3"
-	  SID			  "722"
+	  SID			  "738"
 	  Ports			  [1, 1]
 	  Position		  [885, 865, 915, 895]
 	  ZOrder		  14
@@ -1807,7 +1807,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "BodyLSum2"
-	  SID			  "716"
+	  SID			  "732"
 	  Ports			  [2, 1]
 	  Position		  [885, 785, 915, 815]
 	  ZOrder		  8
@@ -1822,7 +1822,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "BodyRSum2"
-	  SID			  "717"
+	  SID			  "733"
 	  Ports			  [2, 1]
 	  Position		  [885, 685, 915, 715]
 	  ZOrder		  9
@@ -1837,7 +1837,7 @@ Model {
 	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "CastCAS"
-	  SID			  "712"
+	  SID			  "728"
 	  Position		  [1330, 385, 1370, 415]
 	  ZOrder		  4
 	  ShowName		  off
@@ -1847,7 +1847,7 @@ Model {
 	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "CastStates2"
-	  SID			  "720"
+	  SID			  "736"
 	  Position		  [880, 545, 920, 575]
 	  ZOrder		  12
 	  BlockRotation		  270
@@ -1858,7 +1858,7 @@ Model {
 	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "CastStates3"
-	  SID			  "723"
+	  SID			  "739"
 	  Position		  [880, 945, 920, 975]
 	  ZOrder		  15
 	  BlockRotation		  270
@@ -1869,7 +1869,7 @@ Model {
 	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "ConvertIn"
-	  SID			  "714"
+	  SID			  "730"
 	  Position		  [430, 385, 470, 415]
 	  ZOrder		  6
 	  ShowName		  off
@@ -1879,7 +1879,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "HeadSum1"
-	  SID			  "711"
+	  SID			  "727"
 	  Ports			  [2, 1]
 	  Position		  [885, 385, 915, 415]
 	  ZOrder		  3
@@ -1893,7 +1893,7 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "a(2)"
-	  SID			  "718"
+	  SID			  "734"
 	  Position		  [1185, 685, 1215, 715]
 	  ZOrder		  10
 	  BlockMirror		  on
@@ -1904,7 +1904,7 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "a(3)"
-	  SID			  "721"
+	  SID			  "737"
 	  Position		  [1185, 1085, 1215, 1115]
 	  ZOrder		  13
 	  BlockMirror		  on
@@ -1915,7 +1915,7 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "b(1)"
-	  SID			  "710"
+	  SID			  "726"
 	  Position		  [585, 385, 615, 415]
 	  ZOrder		  2
 	  Gain			  "B1"
@@ -1925,17 +1925,17 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "b(2)"
-	  SID			  "715"
+	  SID			  "731"
 	  Position		  [585, 785, 615, 815]
 	  ZOrder		  7
-	  Gain			  "B2"
+	  Gain			  "-B2"
 	  ParamDataTypeStr	  "fixdt(1,16,13)"
 	  OutDataTypeStr	  "fixdt(1,25,24)"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "Output"
-	  SID			  "713"
+	  SID			  "729"
 	  Position		  [1485, 392, 1515, 408]
 	  ZOrder		  5
 	  IconDisplay		  "Port number"
@@ -3217,7 +3217,7 @@ MatData {
     "   &    \"     (         !0    @    !     0    $         !0 $  4    !    \"@   &YO9&4 <&]R=          .    .     8 "
     "   (    !@         %    \"     $    !     0         )    \"             A #@   #@    &    \"     8         !0    @"
     "    !     0    $         \"0    @           #P/PX    P    !@    @    $          4    (     0    0    !         !  "
-    "! !B*#$I#@   $@    &    \"     0         !0    @    !    $@    $         $    !(    R+C<T-S4Y,# P,# P,# P,#(      "
+    "! !B*#$I#@   $@    &    \"     0         !0    @    !    %     $         $    !0    P+C$Y-#4R.3 P,# P,# P,# P-P   "
     "  .    *     8    (     0         %    \"          !     0         .    .     8    (    !          %    \"     $  "
     "  %     0         0    !0   ')I9VAT    #@   #     &    \"     8         !0    @               $         \"0       "
     "  .    4     8    (    !@         %    \"     $    $     0         )    (           P()         >4       ,\"\"0   "
@@ -3335,7 +3335,7 @@ MatData {
     "      4    (     0    $    !          4 !  %     0    H   !N;V1E '!O<G0         #@   #@    &    \"     8         !"
     "0    @    !     0    $         \"0    @            @0 X    X    !@    @    &          4    (     0    $    !      "
     "    D    (            \\#\\.    ,     8    (    !          %    \"     $    $     0         0  0 8B@R*0X   !(    !"
-    "@    @    $          4    (     0   !,    !         !     3    ,BXW,#,R,3DY.3DY.3DY.3DY-@      #@   \"@    &    \""
+    "@    @    $          4    (     0   !0    !         !     4    +3 N,3DS-S,S.3DY.3DY.3DY.3D     #@   \"@    &    \""
     "     $         !0    @          0    $         #@   #@    &    \"     0         !0    @    !    !0    $         $ "
     "    4   !R:6=H=     X    P    !@    @    &          4    (               !          D         #@   %     &    \"  "
     "   8         !0    @    !    !     $         \"0   \"           ,\"\"0        (E       # @D        \")0 X   #( 0  "
@@ -3415,7 +3415,7 @@ MatData {
     "   %    \"     $    !     0         %  0 !0    $    *    ;F]D90!P;W)T          X    X    !@    @    &          4  "
     "  (     0    $    !          D    (            (D .    .     8    (    !@         %    \"     $    !     0        "
     " )    \"             ! #@   #     &    \"     0         !0    @    !    !     $         $  $ &$H,BD.    2     8   "
-    " (    !          %    \"     $    4     0         0    %    \"TQ+C@R-S0R,# P,# P,# P,# T      X    H    !@    @   "
+    " (    !          %    \"     $    4     0         0    %    \"TQ+CDT.3 X.3DY.3DY.3DY.3DY      X    H    !@    @   "
     " !          4    (          $    !          X    P    !@    @    $          4    (     0    0    !         !  ! !L"
     "969T#@   #     &    \"     8         !0    @               $         \"0         .    4     8    (    !@         %"
     "    \"     $    $     0         )    (           P))       #@A4       ,\"20       X(5 #@   ,@!   &    \"     (    "
@@ -3482,7 +3482,7 @@ MatData {
     "  !     0         %  0 !0    $    *    ;F]D90!P;W)T          X    X    !@    @    &          4    (     0    $    "
     "!          D    (            +D .    .     8    (    !@         %    \"     $    !     0         )    \"          "
     "  / _#@   #     &    \"     0         !0    @    !    !     $         $  $ &$H,RD.    2     8    (    !          %"
-    "    \"     $    4     0         0    %    # N.#(W-S8T,# P,# P,# P,#4U      X    H    !@    @    !          4    ( "
+    "    \"     $    4     0         0    %    # N.30Y,3@Y.3DY.3DY.3DY.3<X      X    H    !@    @    !          4    ( "
     "         $    !          X    P    !@    @    $          4    (     0    0    !         !  ! !L969T#@   #     &   "
     " \"     8         !0    @               $         \"0         .    4     8    (    !@         %    \"     $    $  "
     "   0         )    (           P))        PD4       ,\"20       ,)% #@   ,@!   &    \"     (         !0    @    !  "

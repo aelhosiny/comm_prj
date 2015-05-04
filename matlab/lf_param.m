@@ -3,7 +3,7 @@
 % clc;
 
 
-sweep_coeff=8;
+sweep_coeff=2;
 
 % if (sweep_coeff==1)
 %     B1=476;
