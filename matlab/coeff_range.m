@@ -18,11 +18,11 @@ for sweep_coeff=1:8
     A3_mat(sweep_coeff) = A3;
 end
 
-A2_mat = A2_mat.*2^14;
-A3_mat = A3_mat.*2^14;
-
-B1_mat = B1_mat.*2^22;
-B2_mat = B2_mat.*2^22;
+A2_mat = round(A2_mat.*2^14);
+A3_mat = round(A3_mat.*2^14);
+% 
+B1_mat = round(B1_mat.*2^15);
+B2_mat = round(B2_mat.*2^15);
 
 
 coeff_mat = [B1_mat B2_mat A2_mat A3_mat];
