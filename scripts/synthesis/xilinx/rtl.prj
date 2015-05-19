@@ -8,3 +8,7 @@ verilog work $ROOT_DIR/source/rtl/regfile.v
 verilog work $ROOT_DIR/source/rtl/spi_if.v
 verilog work $ROOT_DIR/source/rtl/reset_sync.v
 verilog work $ROOT_DIR/source/rtl/loop_divider.v
+verilog work $ROOT_DIR/source/rtl/differentiator.v
+verilog work $ROOT_DIR/source/rtl/integrator.v
+verilog work $ROOT_DIR/source/rtl/sdm_sec.v
+verilog work $ROOT_DIR/source/rtl/sdm.v
