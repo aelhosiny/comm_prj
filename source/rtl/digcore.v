@@ -55,7 +55,6 @@ module digcore(/*AUTOARG*/
    wire 	 clk_dlf_s;
    wire 	 digrf_rstn_s;
    wire 	 enable_digclk_s;
-
    wire [7:0] 	 rf_dout;
    wire 	 dlf_en;
    wire [15:0] 	 dlf_a2;   
@@ -66,10 +65,9 @@ module digcore(/*AUTOARG*/
    wire [7:0] 	 rf_addr;
    wire 	 rf_rstn;
    wire 	 rf_wre;
-   wire  [14:0] dlf_in; //sfix21_En5
+   wire [14:0] 	 dlf_in;
    
-   
-   
+
    clk_rst_gen clk_rst_gen_1(
 			     // Outputs
 			     .dig_rstn(dig_rstn_s), 
