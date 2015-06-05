@@ -1,9 +1,8 @@
-vhdl work $ROOT_DIR/source/rtl/decimator.vhd
-vhdl work $ROOT_DIR/source/rtl/clk_rst_gen.vhd
-vhdl work $ROOT_DIR/source/rtl/signal_sync.vhd
-vhdl work $ROOT_DIR/source/rtl/digcore.vhd
-verilog work $ROOT_DIR/source/rtl/loop_filter.v
+verilog work $ROOT_DIR/source/rtl/decimator.v
 verilog work $ROOT_DIR/source/rtl/clk_divider.v
+verilog work $ROOT_DIR/source/rtl/clk_rst_gen.v
+verilog work $ROOT_DIR/source/rtl/signal_sync.v
+verilog work $ROOT_DIR/source/rtl/loop_filter.v
 verilog work $ROOT_DIR/source/rtl/regfile.v
 verilog work $ROOT_DIR/source/rtl/spi_if.v
 verilog work $ROOT_DIR/source/rtl/reset_sync.v
@@ -12,3 +11,4 @@ verilog work $ROOT_DIR/source/rtl/differentiator.v
 verilog work $ROOT_DIR/source/rtl/integrator.v
 verilog work $ROOT_DIR/source/rtl/sdm_sec.v
 verilog work $ROOT_DIR/source/rtl/sdm.v
+verilog work $ROOT_DIR/source/rtl/digcore.v

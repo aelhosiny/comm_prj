@@ -49,6 +49,7 @@ module spi_if (/*AUTOARG*/
 
    assign miso = miso_reg[7];
    assign rf_din = data_reg;
+   assign rf_addr = addr_reg;
    
    
    always @(posedge sclk or posedge csn) begin

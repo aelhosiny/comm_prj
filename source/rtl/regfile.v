@@ -22,7 +22,7 @@ module regfile (/*AUTOARG*/
    input rstn;
    input [7:0] addr;
    input [7:0] din;
-   output      dout;
+   output [7:0] dout;   
    output      enable_digclk;
    output      digrf_rstn;
    output      swresetb;

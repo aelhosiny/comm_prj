@@ -6,7 +6,7 @@
 -- Author     : amr  <amr@amr-laptop>
 -- Company    : 
 -- Created    : 18-03-2015
--- Last update: 25-04-2015
+-- Last update: 05-06-2015
 -- Platform   : RTL Compiler, Design Compiler, ModelSim, NC-Sim
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -76,7 +76,6 @@ begin  -- architecture behav
       enable_digclk => enable_digclk,   -- [in  std_logic]
       sys_clk       => sys_clk,         -- [in  std_logic]
       dec_vldout    => dec_vldout_s,    -- [in  std_logic]
-      dec_ratio     => "10",            -- [in  std_logic_vector(1 downto 0)]
       dig_rstn      => dig_rstn_s,      -- [out std_logic]
       clk_625mhz    => clk_625mhz_s,    -- [out std_logic]
       clk_lf        => clk_lf_s);       -- [out std_logic]
@@ -84,7 +83,7 @@ begin  -- architecture behav
 
   signal_sync_1 : entity work.signal_sync
     generic map (
-      polarity_g => '0')                -- [std_logic]
+      polarity_g => 1)                -- [std_logic]
     port map (
       rstn     => dig_rstn_s,           -- [in  std_logic]
       clk      => clk_625mhz_s,         -- [in  std_logic]
@@ -93,7 +92,7 @@ begin  -- architecture behav
 
   signal_sync_2 : entity work.signal_sync
     generic map (
-      polarity_g => '0')                -- [std_logic]
+      polarity_g => 1)                -- [std_logic]
     port map (
       rstn     => dig_rstn_s,           -- [in  std_logic]
       clk      => clk_625mhz_s,         -- [in  std_logic]
