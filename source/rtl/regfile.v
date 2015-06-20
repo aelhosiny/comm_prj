@@ -99,7 +99,7 @@ module regfile (/*AUTOARG*/
    
    
    integer ii;   
-   always @(posedge sclk or negedge rstn) begin
+   always @(negedge sclk or negedge rstn) begin
       if (rstn==1'b0) begin
 	 regbank[0] <= dflt_r0;
 	 regbank[1] <= dflt_r1;

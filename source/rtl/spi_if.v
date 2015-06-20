@@ -42,10 +42,6 @@ module spi_if (/*AUTOARG*/
    reg [1:0] 	state;
    reg [7:0] 	miso_reg;
    
-   
-   
- 
-   
 
    assign miso = miso_reg[7];
    assign rf_din = data_reg;
@@ -58,7 +54,7 @@ module spi_if (/*AUTOARG*/
 	 data_reg   <= 8'b0;
 	 addr_reg   <= 8'b0;
 	 state      <= cmd_st;	
-	 bit_count  <= 3'd7; 
+	 bit_count  <= 3'd0; 
 	 wre        <= 1'b0;	 
       end
       else begin
