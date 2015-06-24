@@ -123,23 +123,6 @@ module sdm(/*AUTOARG*/
    assign sdm_qn = sec3_qunt[0];
    
 
-
-
-
-
-
-
-
-   
-
-   always @(posedge clk or negedge rstn) begin
-      if (rstn==1'b0) begin
-	 
-      end
-      else begin
-	 
-      end
-   end
    
 endmodule 
 	  

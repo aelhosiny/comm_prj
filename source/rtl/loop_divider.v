@@ -36,7 +36,7 @@ module loop_divider (/*AUTOARG*/
    
    
 
-   reset_sync #(
+   /*reset_sync #(
 	   .reset_p(1'b0),
 	   .clk_p(1'b1)
 	   )
@@ -44,7 +44,10 @@ module loop_divider (/*AUTOARG*/
 	      .reset_in(rstn),
 	      .clk(clk),
 	      .reset_out(rstn_s)
-	      );
+	      );*/
+
+   assign rstn_s = rstn;
+   
 
    /*reset_sync #(
 	   .reset_p(1'b0),
