@@ -68,7 +68,7 @@ reset_sync reset_sync(
 
    always @(posedge clko or negedge rstn_s) begin : clkps
       if (rstn_s == 1'b0) begin
-	 add_out_reg <= 7'd2;	 
+	 add_out_reg <= 7'd30;	 
       end
       else begin
 	 add_out_reg <= add_out;	 

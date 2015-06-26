@@ -44,6 +44,8 @@ module sdm_div_loop_tb();
       #(10*tclk);
       rstn = 1'b1;
       #(10000*tclk);
+      #(10000*tclk);
+      #(10000*tclk);
       $stop;      
    end
 

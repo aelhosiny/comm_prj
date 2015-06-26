@@ -12,3 +12,5 @@ verilog work $ROOT_DIR/source/rtl/integrator.v
 verilog work $ROOT_DIR/source/rtl/sdm_sec.v
 verilog work $ROOT_DIR/source/rtl/sdm.v
 verilog work $ROOT_DIR/source/rtl/digcore.v
+verilog work $ROOT_DIR/source/rtl/sdm_div_loop.v
+verilog work $ROOT_DIR/source/rtl/word_sync.v
