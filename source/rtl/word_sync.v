@@ -63,9 +63,9 @@ module word_sync(/*AUTOARG*/
    /////////////////////////////////////////////////////////
    // Write pointer Binary to Gray encoding
    for( i = w_ptr - 2; i >= 0 ; i= i-1 ) begin : wr_bin2gry
-      assign  wr_ptr_gry_i[i] = wr_ptr_nx[i+1] ^ wr_ptr_nx[i];
+      assign  wr_ptr_gry_i[i] = wr_ptr[i+1] ^ wr_ptr[i];
    end	  
-   assign wr_ptr_gry_i[w_ptr -1] = wr_ptr_nx[w_ptr -1];
+   assign wr_ptr_gry_i[w_ptr -1] = wr_ptr[w_ptr -1];
    /////////////////////////////////////////////////////////
    // Sync the gray read pointer to Write domain
    generate
@@ -94,10 +94,10 @@ module word_sync(/*AUTOARG*/
       else begin
 	 wr_ptr <= wr_ptr_nx;
 	 wr_ptr_gry <= wr_ptr_gry_i;	 
-	 if (wr_ptr_nx == rd_ptr_src && wre==1'b1) begin
+	 if (wr_ptr_nx == rd_ptr_src && full==1'b0) begin
 	    full <= 1'b1;
 	 end
-	 else if (rd_ptr_src > wr_ptr) begin
+	 else if (rd_ptr_src != wr_ptr && full == 1'b1) begin
 	    full <= 1'b0;	    
 	 end
 	 if (wre==1'b1) begin
@@ -118,9 +118,9 @@ module word_sync(/*AUTOARG*/
    // Read pointer Binary to Gray encoding
    //genvar 	 i;
    for( i = w_ptr - 2; i >= 0 ; i= i-1 ) begin : rd_bin2gry
-      assign  rd_ptr_gry_i[i] = rd_ptr_nx[i+1] ^ rd_ptr_nx[i];
+      assign  rd_ptr_gry_i[i] = rd_ptr[i+1] ^ rd_ptr[i];
    end	  
-   assign rd_ptr_gry_i[w_ptr -1] = rd_ptr_nx[w_ptr -1];
+   assign rd_ptr_gry_i[w_ptr -1] = rd_ptr[w_ptr -1];
    /////////////////////////////////////////////////////////
    // Sync the gray Write pointer to Read domain
    generate
@@ -150,11 +150,11 @@ module word_sync(/*AUTOARG*/
       else begin
 	 rd_ptr <= rd_ptr_nx;
 	 rd_ptr_gry <= rd_ptr_gry_i;
-	 if (wr_ptr_sink > rd_ptr) begin
-	    empty <= 1'b0;	    
-	 end
-	 else if (rd_ptr_nx == wr_ptr_sink) begin
+	 if (rd_ptr_nx == wr_ptr_sink && empty==1'b0) begin
 	    empty <= 1'b1;	    
+	 end
+	 else if (wr_ptr_sink != rd_ptr && empty==1'b1) begin
+	    empty <= 1'b0;	   
 	 end
 	 if (rde==1'b1) begin
 	    dout <= regbank[rd_ptr];
