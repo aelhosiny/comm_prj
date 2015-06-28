@@ -15,7 +15,7 @@ module signal_sync(/*AUTOARG*/
    rstn, clk, async_in
    );
 
-   parameter polarity_g = 1'b1;
+   parameter polarity_g = 1'b0;
    parameter stages = 3;
    
    
