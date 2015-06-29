@@ -16,3 +16,4 @@ verilog work $ROOT_DIR/source/rtl/sdm_div_loop.v
 verilog work $ROOT_DIR/source/rtl/word_sync.v
 verilog work $ROOT_DIR/source/rtl/sdm_nc_filter.v
 verilog work $ROOT_DIR/source/rtl/sdm_nc.v
+verilog work $ROOT_DIR/source/rtl/spi_regfile.v

@@ -16,8 +16,8 @@ module word_sync(/*AUTOARG*/
    );
 
    parameter w = 4;
-   parameter depth = 16;
-   parameter w_ptr = 4;
+   parameter depth = 32;
+   parameter w_ptr = 5;
    
    
    input rstn_src;
