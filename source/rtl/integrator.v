@@ -15,20 +15,19 @@ module integrator(/*AUTOARG*/
    rstn, clk, din
    );
 
-   parameter w = 10;   
+   parameter w = 10;
+   parameter sat = 1'b0;
+   parameter outreg = 1'b1;
    
    input rstn;
    input clk;
-   input [w-1:0] din;
-   output [w-1:0]  dout;
+   input signed [w-1:0] din;
+   output signed [w-1:0]  dout;
 
+   wire signed [w:0] 	 add_out_tmp;
+   wire signed [w-1:0] 	 add_out;
+   reg signed [w-1:0] 	 add_out_reg;
 
-   wire [w-1:0] 	 din_ext;
-   wire [w-1:0] 	 add_out;
-   reg [w-1:0] 	 add_out_reg;
-
-
-   assign din_ext = {1'b0, din};
    
      
    always @(posedge clk or negedge rstn) begin
@@ -40,9 +39,21 @@ module integrator(/*AUTOARG*/
       end
    end
    
-   assign add_out = add_out_reg + din_ext;
+   assign add_out_tmp = add_out_reg + din;
 
-   assign dout = add_out;
+   if (sat==1'b1) begin : sat_g
+      assign add_out = (add_out_tmp[w-1] == 1'b1) ? {1'b0,{(w-1){1'b1}}} : {1'b0,add_out_tmp[w-2:0]};
+   end
+   else begin : nosat_g
+      assign add_out = add_out_tmp[w-1:0];
+   end
+
+   if (outreg == 1'b1) begin : outreg_g
+      assign dout = add_out_reg;
+   end
+   else begin : nooutreg_g
+      assign dout = add_out;
+   end
    
 
 

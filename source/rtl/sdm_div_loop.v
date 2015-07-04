@@ -11,19 +11,26 @@
 
 module sdm_div_loop(/*AUTOARG*/
    // Outputs
-   sdm_mpr_o, clko, clkob, sdm_qn,
+   sdm_mpr_o, div_clk_out, div_clkb_out, sdm_qn, sdm_nc_out, div_ctrl,
    // Inputs
-   rstn, N, clk, frac
+   rstn, N, div_clk_in, div_clkb_in, clk_dlf, sdm_in, sdm_nc_in,
+   sdm_nc_enable
    );
 
    input rstn;   
    input [5:0] N;
-   input       clk;
-   input [9:0] frac;
+   input       div_clk_in;
+   input       div_clkb_in;
+   input       clk_dlf;
+   input [15:0] sdm_in;
+   input [14:0] sdm_nc_in;
+   input 	sdm_nc_enable;
    output [5:0] sdm_mpr_o;
-   output 	clko;
-   output 	clkob;
+   output 	div_clk_out;
+   output 	div_clkb_out;
    output 	sdm_qn;
+   output [14:0] sdm_nc_out;
+   output [5:0] div_ctrl;
    
    
    
@@ -31,43 +38,54 @@ module sdm_div_loop(/*AUTOARG*/
    wire [5:0]  sdm_mpr_o;
    wire signed [6:0]  sdm_out_ext;
    wire [3:0]  sdm_out;
-   wire        clko;
-   wire        clkob;
    wire signed [6:0]  add_out;
    reg signed [6:0]  add_out_reg;
-   wire 	     rstn_s;
+   wire 	     rstn_clkin_s;
    
    
    assign sdm_out_ext = {sdm_out[3], sdm_out[3], sdm_out[3], sdm_out};
    assign add_out = N + sdm_out_ext;
    assign sdm_mpr_o = add_out_reg[5:0];
+   assign div_ctrl = sdm_mpr_o;
    
-
-reset_sync reset_sync(
-		      .reset_out(rstn_s),
+   reset_sync reset_sync1(
+		      .reset_out(rstn_clkin_s),
 		      .reset_in(rstn), 
-		      .clk(clk)
+		      .clk(div_clk_in)
 		      ) ;
    
+   
    loop_divider loop_divider(
-			     .clko(clko), 
-			     .clkob(clkob),
-			     .rstn(rstn_s), 
-			     .clk(clk), 
+			     .clko(div_clk_out), 
+			     .clkob(div_clkb_out),
+			     .rstn(rstn_clkin_s), 
+			     .clk(div_clk_in), 
 			     .clkb(1'b0), 
 			     .div_n(sdm_mpr_o)
 			     ) ;
 
+   sdm_nc sdm_nc
+     (
+      .sdm_nc_out(sdm_nc_out),
+      .rstn(rstn),
+      .rstn_clkref(rstn_clkin_s),
+      .enable(sdm_nc_enable), 
+      .clk_ref(div_clk_out), 
+      .clk_dlf(clk_dlf), 
+      .sdm_nc_in(sdm_nc_in), 
+      .sdm_qn(sdm_qn)
+      );
+   
    sdm sdm(
 	   .sdm_out(sdm_out), 
 	   .sdm_qn(sdm_qn),
-	   .din(frac), 
-	   .rstn(rstn_s), 
-	   .clk(clko)
+	   .din(sdm_in), 
+	   .rstn(rstn_clkin_s), 
+	   .clk(div_clk_out)
    );
 
-   always @(posedge clko or negedge rstn_s) begin : clkps
-      if (rstn_s == 1'b0) begin
+   always @(posedge div_clk_out or negedge rstn_clkin_s) begin : clkps
+      if (rstn_clkin_s == 1'b0) begin
 	 add_out_reg <= 7'd30;	 
       end
       else begin

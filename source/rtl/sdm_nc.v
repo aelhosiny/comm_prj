@@ -13,12 +13,13 @@ module sdm_nc(/*AUTOARG*/
    // Outputs
    sdm_nc_out,
    // Inputs
-   rstn, enable, clk_ref, clk_dlf, sdm_nc_in, sdm_qn
+   rstn_clkref, rstn, enable, clk_ref, clk_dlf, sdm_nc_in, sdm_qn
    );
    
    parameter w1 = 15;
    parameter w2 = 10;
    
+   input rstn_clkref;
    input rstn;
    input enable;   
    input clk_ref;
@@ -49,11 +50,11 @@ module sdm_nc(/*AUTOARG*/
 			 .reset_in(rstn), 
 			 .clk(clk_dlf)
 			 ) ;
-   reset_sync reset_sync2(
+   /*reset_sync reset_sync2(
 			 .reset_out(rstn_clkref),
 			 .reset_in(rstn), 
 			 .clk(clk_ref)
-			 ) ;
+			 ) ;*/
       
    word_sync #(
 	       .w(w1)
@@ -68,7 +69,9 @@ module sdm_nc(/*AUTOARG*/
 			 );
 
    integrator #(
-		.w(w2)
+		.w(w2),
+		.sat(1'b0),
+		.outreg(1'b1)
 		)
    acc1(
 	.rstn(rstn_clkref),

@@ -24,8 +24,10 @@ module loop_divider (/*AUTOARG*/
    wire        rstn_b_s;
    reg [5:0]   clk_cntr;
    reg [5:0]   clkb_cntr;
-   reg 	       clko;
-   reg 	       clkob;
+   reg 	       clko_r;
+   reg 	       clkob_r;
+   reg 	       clko_ne;
+   reg 	       clkob_ne;   
    
 
    
@@ -62,14 +64,14 @@ module loop_divider (/*AUTOARG*/
    
    always @(posedge clk or negedge rstn_s) begin
       if (rstn_s==1'b0) begin
-	 clk_cntr <= 6'b0;
-	 clko <= 1'b0;
-	 clkob <= 1'b1;	 
+	 clk_cntr <= 6'd0;
+	 clko_r <= 1'b0;
+	 clkob_r <= 1'b1;	 
       end
       else begin
-	 if (clk_cntr+1==div_n_hlf || clk_cntr+1==div_n) begin
-	    clko <= ~clko;
-	    clkob <= ~clkob;
+	 if (clk_cntr==div_n_hlf || clk_cntr==6'd0) begin
+	    clko_r <= ~clko_r;
+	    clkob_r <= ~clkob_r;
 	 end
 	 if (clk_cntr+1 == div_n) begin
 	    clk_cntr <= 6'b0;	    
@@ -80,22 +82,18 @@ module loop_divider (/*AUTOARG*/
       end
    end
 
-/*    always @(posedge clkb or negedge rstn_b_s) begin
-      if (rstn_b_s==1'b0) begin
-	 clkb_cntr <= 6'b0;
-	 clkob <= 1'b1;	 
+   always @(negedge clk or negedge rstn_s) begin : ne_retime
+      if (rstn_s == 1'b0) begin
+	 clko_ne <= 1'b0;
+	 clkob_ne <= 1'b0;
       end
       else begin
-	 if (clkb_cntr+1==div_n_hlf || clkb_cntr+1==div_n) begin
-	    clkob <= ~clkob;	    
-	 end
-	 if (clkb_cntr+1 == div_n) begin
-	    clkb_cntr <= 6'b0;
-	 end
-	 else begin
-	    clkb_cntr <= clkb_cntr + 1'b1;
-	 end
+	 clko_ne <= clko_r  & div_n[0];
+	 clkob_ne <= clkob_r & div_n[0];
       end
-   end  */
+   end
+
+   assign clko = clko_ne | clko_r;
+   assign clkob = clkob_r | clkob_ne;
    
 endmodule // loop_divider

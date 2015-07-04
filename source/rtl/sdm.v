@@ -15,7 +15,7 @@ module sdm(/*AUTOARG*/
    din, rstn, clk
    );
 
-   parameter w = 10;
+   parameter w = 16;
    
    input [w-1:0] din;
    input 	 rstn;
@@ -55,7 +55,8 @@ module sdm(/*AUTOARG*/
 	.clk(clk),
 	.din(din_sgn),
 	.dout(sec1_dout),
-	.qunt_out(sec1_qunt)
+	.qunt_out(sec1_qunt),
+	.sdm_qn()
 	);
 
    sdm_sec #(
@@ -66,7 +67,8 @@ module sdm(/*AUTOARG*/
 	.clk(clk),
 	.din(sec1_dout),
 	.dout(sec2_dout),
-	.qunt_out(sec2_qunt)
+	.qunt_out(sec2_qunt),
+	.sdm_qn()
 	);
    
    sdm_sec #(
@@ -77,7 +79,8 @@ module sdm(/*AUTOARG*/
 	.clk(clk),
 	.din(sec2_dout),
 	.dout(),
-	.qunt_out(sec3_qunt)
+	.qunt_out(sec3_qunt),
+	.sdm_qn(sdm_qn)
 	);
    
 
@@ -120,7 +123,6 @@ module sdm(/*AUTOARG*/
    
    
    assign sdm_out = add_out;
-   assign sdm_qn = sec3_qunt[0];
    
 
    
