@@ -1,5 +1,5 @@
 //                              -*- Mode: Verilog -*-
-// Filename        : digcore.v
+// Filename        : digital_loop_filter.v
 // Description     : digital core toplevel
 // Author          : amr
 // Created On      : Fri Jun  5 21:18:24 2015
@@ -8,7 +8,7 @@
 // Update Count    : 0
 // Status          : Unknown, Use with caution!
 
-module digcore(/*AUTOARG*/
+module digital_loop_filter(/*AUTOARG*/
    // Outputs
    clk_tdc, clk_dlf, dlf_out, sdm_nc_out,
    // Inputs
@@ -24,7 +24,7 @@ module digcore(/*AUTOARG*/
    input [4:0] tdc_dout;
    // Reset from regfile
    input       digrf_rstn;
-   // Enable digcore clock from regfile
+   // Enable digital_loop_filter clock from regfile
    input       enable_digclk;
    // DLF coefficients
    input [15:0] dlf_a2;   

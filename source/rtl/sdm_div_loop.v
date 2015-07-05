@@ -11,7 +11,7 @@
 
 module sdm_div_loop(/*AUTOARG*/
    // Outputs
-   sdm_mpr_o, div_clk_out, div_clkb_out, sdm_qn, sdm_nc_out, div_ctrl,
+   div_clk_out, div_clkb_out, sdm_qn, sdm_nc_out, div_ctrl,
    // Inputs
    rstn, N, div_clk_in, div_clkb_in, clk_dlf, sdm_in, sdm_nc_in,
    sdm_nc_enable
@@ -25,7 +25,6 @@ module sdm_div_loop(/*AUTOARG*/
    input [15:0] sdm_in;
    input [14:0] sdm_nc_in;
    input 	sdm_nc_enable;
-   output [5:0] sdm_mpr_o;
    output 	div_clk_out;
    output 	div_clkb_out;
    output 	sdm_qn;

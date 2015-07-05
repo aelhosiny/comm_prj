@@ -39,6 +39,7 @@ module sdm(/*AUTOARG*/
    wire signed [3:0] add_in2;
    wire signed [3:0] add_in3;
    wire signed [3:0] add_out;
+   reg signed [3:0] add_out_reg;
 
 
    
@@ -120,9 +121,17 @@ module sdm(/*AUTOARG*/
    assign add_in2 = {sec2_diff[1], sec2_diff[1], sec2_diff};
    assign add_in3 = {sec3_diff2[2], sec3_diff2};
    assign add_out = add_in1 + add_in2 + add_in3;
+
+   always @(posedge clk or negedge rstn) begin : outreg
+      if (rstn==1'b0) begin
+	 add_out_reg <= 4'd0;
+      end
+      else begin
+	 add_out_reg <= add_out;
+      end
+   end
    
-   
-   assign sdm_out = add_out;
+   assign sdm_out = add_out_reg;
    
 
    
