@@ -1,7 +1,6 @@
 function y = qunt(u,w)
-
-	if u < (2^w-1)-1
-		y = 0 ;
+	if u <= (2^(w-1)-1)
+		y = u ;
 	else
-		y = 1 ;
+		y = u-2^(w-1)-1 ;
 end
