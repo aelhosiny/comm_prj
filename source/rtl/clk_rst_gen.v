@@ -56,9 +56,11 @@ module clk_rst_gen(/*AUTOARG*/
    clk_divider clk_divider_1(
 			     .rstn(por_rstn_s),
 			     .clk_in(sys_clk),
-			     .clk_out(clk_625mhz_s));
+			     .clk_out(clk_625mhz_s),
+                             .clkb_out(clk_625mhz_out)
+);
    
-   assign clk_625mhz_out = clk_625mhz_s;
+   //assign clk_625mhz_out = clk_625mhz_s;
 
    // DLF clock generation
   always @(posedge clk_625mhz_s or negedge por_rstn_s) begin
@@ -68,7 +70,7 @@ module clk_rst_gen(/*AUTOARG*/
       end
       else begin	
 	 clkdiv_cnt_s <= clkdiv_cnt_s + 1'b1;	    
-	 if (clkdiv_cnt_s == 4'd15 || clkdiv_cnt_s==4'd0) begin
+	 if (clkdiv_cnt_s == 4'd8 || clkdiv_cnt_s==4'd0) begin
             clk_lf_s <= ~clk_lf_s;
 	 end	 
       end

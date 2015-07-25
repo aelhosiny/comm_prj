@@ -27,8 +27,9 @@ module sdm_sec(/*AUTOARG*/
    
 
 
-   wire signed [w-1:0] sub1_in1;
-   wire signed [w-1:0] sub1_in2;
+   wire signed [w:0] sub1_in1;
+   wire signed [w:0] sub1_in2;
+   wire signed [w:0] sub1_out_ext;
    wire signed [w-1:0] sub1_out;
    wire signed [w:0] int1_in;   
    wire signed [w:0] int1_out;   
@@ -41,17 +42,20 @@ module sdm_sec(/*AUTOARG*/
    wire signed [w:0] sdm_qn_ext;
 
    
-   assign sub1_in1 = {1'b0, din};   
+   assign sub1_in1 = {2'b00, din};
    assign qunt1 = int1_out[w-1];
-   assign sub1_in2 = {{w-1{1'b0}},qunt1};
-   assign sub1_out = sub1_in1 - sub1_in2;
+   //assign sub1_in2 = {{w-1{1'b0}},qunt1_reg};
+   assign sub1_in2 = {1'b0, qunt1_reg} << (w+1-2);
+   //assign sub1_out = sub1_in1 - sub1_in2;
+   assign sub1_out_ext = sub1_in1 - sub1_in2;
+   assign sub1_out = {sub1_out_ext[w], sub1_out_ext[w-2:0]};
 
    assign int1_in = {sub1_out[w-1],sub1_out};
    
    integrator #(
 		.w(w+1),
 		.sat(1'b0),
-		.outreg(1'b1)
+		.outreg(1'b0)
 		)
    int1(
 	.rstn(rstn),
@@ -62,7 +66,7 @@ module sdm_sec(/*AUTOARG*/
 
    
    assign sub2_in1 = int1_out;
-   assign sub2_in2 = {{w-1{1'b0}},qunt1_reg};
+   assign sub2_in2 = {1'b0,qunt1} << (w+1-2);
    assign sub2_out = sub2_in1 - sub2_in2;
    assign sdm_qn_ext = sub2_in2 - sub2_in1;
    assign sdm_qn = sdm_qn_ext[0];

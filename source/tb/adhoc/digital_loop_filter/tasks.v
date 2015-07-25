@@ -8,7 +8,7 @@
 // Update Count    : 0
 // Status          : Unknown, Use with caution!
 
-task write_reg;
+/*task write_reg;
    input integer burst;   
    input [7:0] addr;
    input [7:0] data;
@@ -164,4 +164,11 @@ task read_reg;
 	 join
       end
    end
-endtask
+endtask // read_reg*/
+
+task gen_clk;
+   begin
+      sys_clk <= ~sys_clk;
+      #(t_sysclk/2);
+   end
+endtask // for

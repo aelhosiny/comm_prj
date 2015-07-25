@@ -1,5 +1,5 @@
 //                              -*- Mode: Verilog -*-
-// Filename        : sdm_div_loop.v
+// Filename        : fractional_divider.v
 // Description     : Integrate the SDM and loop divider
 // Author          : amr
 // Created On      : Mon Jun 22 00:37:28 2015
@@ -9,7 +9,7 @@
 // Status          : Unknown, Use with caution!
 
 
-module sdm_div_loop(/*AUTOARG*/
+module fractional_divider(/*AUTOARG*/
    // Outputs
    div_clk_out, div_clkb_out, sdm_qn, sdm_nc_out, div_ctrl,
    // Inputs

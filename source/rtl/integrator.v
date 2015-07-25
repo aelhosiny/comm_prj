@@ -45,7 +45,7 @@ module integrator(/*AUTOARG*/
       assign add_out = (add_out_tmp[w-1] == 1'b1) ? {1'b0,{(w-1){1'b1}}} : {1'b0,add_out_tmp[w-2:0]};
    end
    else begin : nosat_g
-      assign add_out = add_out_tmp[w-1:0];
+      assign add_out = {add_out_tmp[w], add_out_tmp[w-2:0]};
    end
 
    if (outreg == 1'b1) begin : outreg_g
