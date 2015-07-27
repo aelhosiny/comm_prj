@@ -56,7 +56,8 @@ module decimator
   input   enable; 
   input   rstn; 
   input   [4:0] filter_in; //sfix6_En5
-  output  [14:0] filter_out; //sfix21_En5
+//  output  [14:0] filter_out; //sfix21_En5
+  output  [20:0] filter_out; //sfix21_En5
   output  ce_out; 
 
 ////////////////////////////////////////////////////////////////
@@ -321,5 +322,6 @@ module decimator
 
   // Assignment Statements
   assign ce_out = ce_out_reg;
-  assign filter_out = output_register[19:5];
+//  assign filter_out = output_register[19:5];
+  assign filter_out = output_register;
 endmodule  // decimator

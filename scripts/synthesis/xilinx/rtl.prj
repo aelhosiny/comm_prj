@@ -11,8 +11,8 @@ verilog work $ROOT_DIR/source/rtl/differentiator.v
 verilog work $ROOT_DIR/source/rtl/integrator.v
 verilog work $ROOT_DIR/source/rtl/sdm_sec.v
 verilog work $ROOT_DIR/source/rtl/sdm.v
-verilog work $ROOT_DIR/source/rtl/digcore.v
-verilog work $ROOT_DIR/source/rtl/sdm_div_loop.v
+verilog work $ROOT_DIR/source/rtl/digital_loop_filter.v
+verilog work $ROOT_DIR/source/rtl/fractional_divider.v
 verilog work $ROOT_DIR/source/rtl/word_sync.v
 verilog work $ROOT_DIR/source/rtl/sdm_nc_filter.v
 verilog work $ROOT_DIR/source/rtl/sdm_nc.v

@@ -36,13 +36,13 @@ cic_out_f = cic_out.*2^15;
 % sec1_in_f = sec1_in.*2^5;
 % sec2_out_f = sec2_out.*2^5;
 % sec2_out1_f = sec2_out1.*2^5;
-lf_out_f = lf_out.*2^18;
+% lf_out_f = lf_out.*2^18;
 
 file_out = strcat('cic_out_',num2str(R),'.txt');
 dlmwrite(file_out, cic_out_f, '\r');
 dlmwrite('cic_out1.txt', cic_out_f, '\r');
 
-dlmwrite('lf_out.txt', lf_out_f, '\r');
+% dlmwrite('lf_out.txt', lf_out_f, '\r');
 
 % dlmwrite('sec1_out.txt', sec1_out_f, '\r');
 % dlmwrite('sec1_in.txt', sec1_in_f, '\r');
@@ -58,9 +58,9 @@ dlmwrite('lf_out.txt', lf_out_f, '\r');
 % subplot(2,1,2) ; plot(t1,cic_out); grid on;
 % 
 % plot_spectrum(cic_in, fs_in);
-plot_spectrum(cic_out, fs_in/R);
+% plot_spectrum(cic_out, fs_in/R);
 % plot_spectrum(lf_out1, fs_in/R);
-plot_spectrum(lf_out, fs_in/R);
+% plot_spectrum(lf_out, fs_in/R);
 plot_spectrum(lf2_out, fs_in/R);
 % plot_spectrum(cic_out1, fs_in/R);
 
