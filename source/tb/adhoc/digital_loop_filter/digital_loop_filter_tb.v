@@ -42,7 +42,7 @@
 
    
 
-`include "../../tasks.v"
+`include "../include/tasks.v"
    
    initial begin : init_conf
       por_rstn = 0;
@@ -50,8 +50,8 @@
       tdc_dout = 0;
       digrf_rstn = 0;
       enable_digclk = 0;
-      dlf_a2 = 31934;
-      dlf_a3 =  -15552;
+      dlf_a2 = -31934;
+      dlf_a3 =  15552;
       dlf_b1 = 1594;
       dlf_b2 = -1587;
       dlf_en = 0;

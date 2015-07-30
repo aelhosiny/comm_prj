@@ -47,20 +47,18 @@ module digital_loop_filter(/*AUTOARG*/
    wire 	 dig_rstn_s;
    wire 	 dec_clk;
    wire 	 clk_dlf_s;   
-   wire [20:0] 	 dlf_in;
-//   wire [14:0] 	 dec_out;
-   wire [20:0] 	 dec_out;
-   wire [20:0] 	 dec_out_slc;
-   //wire [14:0] 	 sub_out;
-   wire [20:0] 	 sub_out;
-   wire [20:0] dlf_sdm_nc_in_ext;
+   wire signed [15:0]  dlf_in;
+   wire signed [20:0]  dec_out;
+   wire signed [15:0]  dec_out_slc;
+   wire signed [15:0]  sub_out;
+   wire signed [15:0]  dlf_sdm_nc_in_ext;
+   wire signed [5:0]   dec_in;
 
-   assign dlf_sdm_nc_in_ext = dlf_sdm_nc_in << (21-15);
-   assign dec_out_slc = {dec_out[20:3], 3'b000};
-//   assign sub_out = dec_out - dlf_sdm_nc_in;
+   assign dec_in = tdc_dout - 6'sd16;
+   assign dlf_sdm_nc_in_ext = {1'b0,dlf_sdm_nc_in};
+   assign dec_out_slc = dec_out[20:5];
    assign sub_out = dec_out_slc - dlf_sdm_nc_in_ext;
    
-   //assign dlf_in = {1'b0, sub_out};
    assign dlf_in = sub_out;
    assign sdm_nc_out = sub_out;
 
@@ -104,7 +102,7 @@ module digital_loop_filter(/*AUTOARG*/
 			 .clk(dec_clk),
 			 .enable(dlf_en_s),
 			 .rstn(dig_rstn_s),
-			 .filter_in(tdc_dout),
+			 .filter_in(dec_in),
 			 .filter_out(dec_out),
 			 .ce_out()
 			 );

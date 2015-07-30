@@ -55,7 +55,7 @@ module decimator
   input   clk; 
   input   enable; 
   input   rstn; 
-  input   [4:0] filter_in; //sfix6_En5
+  input   [5:0] filter_in; //sfix6_En5
 //  output  [14:0] filter_out; //sfix21_En5
   output  [20:0] filter_out; //sfix21_En5
   output  ce_out; 
@@ -164,7 +164,7 @@ module decimator
       end
       else begin
         if (enable == 1'b1) begin
-          input_register <= {1'b0,filter_in};
+          input_register <= filter_in;
         end
       end
     end // input_reg_process
