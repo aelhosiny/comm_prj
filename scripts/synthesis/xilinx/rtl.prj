@@ -17,3 +17,12 @@ verilog work $ROOT_DIR/source/rtl/word_sync.v
 verilog work $ROOT_DIR/source/rtl/sdm_nc_filter.v
 verilog work $ROOT_DIR/source/rtl/sdm_nc.v
 verilog work $ROOT_DIR/source/rtl/spi_regfile.v
+
+
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO_counter.v
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO_err_calc.v
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO_reset_generator.v
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO_signal_del.v
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO_single_sync.v
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO.v
+verilog work /home/amr/work/abulliel/aabuellil_rev_0108/freq_calb_RO_xtal_counter.v

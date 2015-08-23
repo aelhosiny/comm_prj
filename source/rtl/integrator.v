@@ -10,7 +10,7 @@
 
 module integrator(/*AUTOARG*/
    // Outputs
-   dout,
+   dout, carry,
    // Inputs
    rstn, clk, din
    );
@@ -23,19 +23,22 @@ module integrator(/*AUTOARG*/
    input clk;
    input signed [w-1:0] din;
    output signed [w-1:0]  dout;
+   output                 carry;
 
    wire signed [w:0] 	 add_out_tmp;
    wire signed [w-1:0] 	 add_out;
    reg signed [w-1:0] 	 add_out_reg;
-
+   reg                carry_reg;
    
      
    always @(posedge clk or negedge rstn) begin
       if (rstn==1'b0) begin
-	 add_out_reg <= {(w){1'b0}};	 
+	 add_out_reg <= {(w){1'b0}};
+	 carry_reg <= 1'b0;
       end
       else begin
-	 add_out_reg <= add_out;	 
+	 add_out_reg <= add_out;
+	 carry_reg <= add_out_tmp[w-1];
       end
    end
    
@@ -50,9 +53,11 @@ module integrator(/*AUTOARG*/
 
    if (outreg == 1'b1) begin : outreg_g
       assign dout = add_out_reg;
+      assign carry = carry_reg;
    end
    else begin : nooutreg_g
       assign dout = add_out;
+      assign carry = add_out_tmp[w-1];
    end
    
 
