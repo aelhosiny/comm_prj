@@ -1,58 +1,4 @@
-% clear all;
-% close all;
-% clc;
-
-
-sweep_coeff=5;
-
-
-% if (sweep_coeff==1)
-%     B1=476;
-%     B2=0.000488281;
-%     A2=0.974426;
-% elseif (sweep_coeff==2)
-%     B1=238;
-%     B2=0.00198364;
-%     A2=0.950119;
-% elseif sweep_coeff==3
-%     B1=158;
-%     B2=0.00447083;
-%     A2=0.927002;
-% elseif sweep_coeff==4
-%     B1=118;
-%     B2=0.00794983;
-%     A2=0.904999;
-% elseif sweep_coeff==5
-%     B1=94;
-%     B2=0.0124359;
-%     A2=0.884003;    
-% elseif sweep_coeff==6
-%     B1=78;
-%     B2=0.0179138;
-%     A2=0.863953;  
-% elseif sweep_coeff==7
-%     B1=68;
-%     B2=0.0243683;
-%     A2=0.844849; 
-% elseif sweep_coeff==8
-%     B1=58;
-%     B2=0.0318451;
-%     A2=0.826477;     
-% end
-% 
-% 
-% 
-% 
-% B1 = K2*(1-K3)*(1+K1);
-% B2 = -K1*K2*(1-K3);
-% 
-% 
-% M = ((2^9)-1)/(2^9);
-% 
-% A1 = 1;
-% A2 = -(M+K3);
-% A3 = K3*M;
-
+% sweep_coeff=8;
 
 if (sweep_coeff==1)
     B1=0.0497275;
@@ -100,6 +46,15 @@ end
 
 c = [1 -A2 A3];
 roots(c)
+
+A_FL=16;
+B_FL=15;
+
+A2_rtl = -A2*2^A_FL;
+A3_rtl = A3*2^A_FL;
+B1_rtl = B1*2^B_FL;
+B2_rtl = -B2*2^B_FL;
+
 
 % p1 = 0.99;
 % p2 = 0.99;

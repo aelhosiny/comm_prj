@@ -27,10 +27,10 @@ module digital_loop_filter(/*AUTOARG*/
    // Enable digital_loop_filter clock from regfile
    input       enable_digclk;
    // DLF coefficients
-   input [15:0] dlf_a2;   
-   input [15:0] dlf_a3;  
-   input [15:0] dlf_b1;  
-   input [15:0] dlf_b2;
+   input [17:0] dlf_a2;   
+   input [17:0] dlf_a3;  
+   input [17:0] dlf_b1;  
+   input [17:0] dlf_b2;
    // DLF enable from regfile
    input 	dlf_en;
    // SDM NC to be subtracted from DEC out

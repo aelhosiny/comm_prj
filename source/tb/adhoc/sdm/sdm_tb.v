@@ -22,8 +22,8 @@ module sdm_tb();
    initial begin
       rstn = 1'b0;
       clk = 1'b0;
-      din = 39425;
-      N = 30;
+      din = 26625;
+      N = 31;
    end
 
    always begin

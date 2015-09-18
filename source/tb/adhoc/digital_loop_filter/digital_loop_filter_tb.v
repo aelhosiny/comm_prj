@@ -28,21 +28,30 @@
    reg [4:0] tdc_dout;
    reg       digrf_rstn;
    reg       enable_digclk;
-   reg signed [15:0] dlf_a2;
-   reg signed [15:0] dlf_a3;
-   reg signed [15:0] dlf_b1;
-   reg signed [15:0] dlf_b2;
+   reg signed [17:0] dlf_a2;
+   reg signed [17:0] dlf_a3;
+   reg signed [17:0] dlf_b1;
+   reg signed [17:0] dlf_b2;
    reg               dlf_en;
    reg [14:0]        dlf_sdm_nc_in;
    wire              clk_tdc;
    wire              clk_dlf;
-   wire [15:0]       dlf_out;
+   wire signed [15:0]       dlf_out;
    wire [14:0]       sdm_nc_out;
    reg               clken;
-
+   wire signed [15:0] dlf_in;
+   
+   assign dlf_in = DUT.loop_filter_1.filter_in ;
+   
+   integer           file_handle, fileo1_handle, fileo2_handle;
+   initial begin
+      file_handle = $fopen("$INPATH/tdc_out.txt", "r");
+      fileo1_handle=$fopen("$OUTPATH/tdc_out1.txt", "w");
+      fileo2_handle=$fopen("$OUTPATH/tdc_out2.txt", "w");
+   end
    
 
-`include "../include/tasks.v"
+`include "../../include/tasks.v"
    
    initial begin : init_conf
       por_rstn = 0;
@@ -50,19 +59,15 @@
       tdc_dout = 0;
       digrf_rstn = 0;
       enable_digclk = 0;
-      dlf_a2 = -31934;
-      dlf_a3 =  15552;
-      dlf_b1 = 1594;
-      dlf_b2 = -1587;
+      dlf_a2 = -119760;
+      dlf_a3 =  54248;
+      dlf_b1 = 90033;
+      dlf_b2 = -88579;
       dlf_en = 0;
       dlf_sdm_nc_in = 0; 
       clken = 1'b0;
    end
 
-   integer file_handle;
-   initial begin
-      file_handle = $fopen("/home/amr/work/comm_prj/source/tb/adhoc/digital_loop_filter/tests/tc1/simin/tdc_out.txt", "r");
-   end
 
    always begin
       gen_clk();
@@ -77,25 +82,40 @@
       clken = 1'b1;
       enable_digclk = 1'b1;
       #(10*t_sysclk);
-      @(posedge sys_clk);
-      dlf_en = 1'b1;
-      while (file_handle != 0) begin
-         @(posedge clk_tdc);
-         $fscanf(file_handle, "%d\n", tdc_dout);
-      end
-      /*write_reg(0, 8'd0, 8'h5A);
-       write_reg(regcount, 8'd0, 8'd0);
-       #(10*t_spiclk);
-       read_reg(regcount, 8'd0);*/
-      
+      /*fork 
+         begin
+            external_stim();
+         end
+         begin
+            @(posedge dlf_en);
+            while (dlf_en==1'b1) begin
+               $fdisplay(fileo1_handle,"%d",dlf_out);
+               @(posedge clk_dlf);
+            end
+         end
+      join*/
+      fork
+         begin
+            ramp_test();
+         end
+         begin
+            @(posedge dlf_en);
+            $fdisplay(fileo2_handle,"tdc_dout,dlf_out");
+            while (dlf_en==1'b1) begin
+               $fdisplay(fileo2_handle,"%d,%d,%d",tdc_dout,dlf_in,dlf_out);
+               //@(posedge clk_dlf);
+               @(posedge clk_tdc);
+            end
+         end
+      join
+      $fclolse(file_handle);
+      $fclolse(fileo2_handle);
+      $fclolse(fileo2_handle);
       $stop;
    end
-
+   
 
    digital_loop_filter DUT(
-                           /*.por_rstn(por_rstn),
-                            .digrf_rstn(digrf_rstn),                       
-                            .enable_digclk(enable_digclk),*/
                            .por_rstn(por_rstn),
                            .digrf_rstn(por_rstn),                          
                            .enable_digclk(por_rstn),
